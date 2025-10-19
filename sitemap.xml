@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    
+    <!-- EDIT: Update domain and lastmod dates as needed -->
+    
+    <url>
+        <loc>https://alaaatefelesily.com/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alaaatefelesily.com/" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alaaatefelesily.com/ar/" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://alaaatefelesily.com/" />
+    </url>
+    
+    <url>
+        <loc>https://alaaatefelesily.com/about.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alaaatefelesily.com/about.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alaaatefelesily.com/ar/about.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://alaaatefelesily.com/about.html" />
+    </url>
+    
+    <url>
+        <loc>https://alaaatefelesily.com/contact.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alaaatefelesily.com/contact.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alaaatefelesily.com/ar/contact.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://alaaatefelesily.com/contact.html" />
+    </url>
+    
+    <url>
+        <loc>https://alaaatefelesily.com/links.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://alaaatefelesily.com/links.html" />
+        <xhtml:link rel="alternate" hreflang="ar" href="https://alaaatefelesily.com/ar/links.html" />
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://alaaatefelesily.com/links.html" />
+    </url>
+    
+</urlset>
