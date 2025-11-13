@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Alaa Atef Elesily | Software Engineer</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <div class="action-btn whatsapp" data-tooltip="WhatsApp">
+            <a href="https://wa.me/201156595620" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <div class="action-btn telegram" data-tooltip="Telegram">
+            <a href="https://t.me/alaaatefelesily" target="_blank">
+                <i class="fab fa-telegram"></i>
+            </a>
+        </div>
+        <div class="action-btn email" data-tooltip="Email">
+            <a href="mailto:alaaatefelesily@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="brand-text">Alaa Atef</span>
+                </a>
+            </div>
+
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="links.html" class="nav-link">Links</a>
+                <a href="tools.html" class="nav-link">tools</a>
+            </div>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="contact-hero">
+            <div class="hero-background">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge glass-card">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Get In Touch</span>
+                    </div>
+                    <h1 class="hero-title">Let's Create <span class="text-gradient">Something Amazing</span> Together</h1>
+                    <p class="hero-description">
+                        I'm always excited to discuss new projects, creative ideas, and opportunities to bring your vision to life.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item glass-card">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>24h</h3>
+                                <p>Response Time</p>
+                            </div>
+                        </div>
+                        <div class="stat-item glass-card">
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>100%</h3>
+                                <p>Client Satisfaction</p>
+                            </div>
+                        </div>
+                        <div class="stat-item glass-card">
+                            <i class="fas fa-project-diagram"></i>
+                            <div>
+                                <h3>50+</h3>
+                                <p>Projects Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container glass-card">
+                        <div class="form-header">
+                            <h2>Start Your Project</h2>
+                            <p>Fill out the form below and I'll get back to you within 24 hours</p>
+                        </div>
+
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <div class="input-container">
+                                    <input type="text" id="name" name="name" required>
+                                    <label for="name">
+                                        <i class="fas fa-user"></i>
+                                        Your Full Name
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-container">
+                                    <input type="email" id="email" name="email" required>
+                                    <label for="email">
+                                        <i class="fas fa-envelope"></i>
+                                        Email Address
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-container">
+                                    <select id="service" name="service" required>
+                                        <option value=""></option>
+                                        <option value="web-development">Web Development</option>
+                                        <option value="mobile-app">Mobile App Development</option>
+                                        <option value="ui-ux">UI/UX Design</option>
+                                        <option value="consultation">Technical Consultation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="service">
+                                        <i class="fas fa-briefcase"></i>
+                                        Project Type
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-container">
+                                    <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+                                    <label for="message">
+                                        <i class="fas fa-comment"></i>
+                                        Project Details
+                                    </label>
+                                    <div class="input-border"></div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="submit-btn">
+                                <span class="btn-text">Send Message</span>
+                                <div class="btn-loader">
+                                    <div class="loader"></div>
+                                </div>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Info & Map -->
+                    <div class="contact-sidebar">
+                        <!-- Profile Card -->
+                        <div class="profile-card glass-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <div class="avatar-image">
+                                        <i class="fas fa-code"></i>
+                                    </div>
+                                    <div class="online-status"></div>
+                                </div>
+                                <div class="profile-info">
+                                    <h3>Alaa Atef Elesily</h3>
+                                    <p>Software Engineering Student</p>
+                                    <div class="profile-bio">
+                                        <p>I am passionate about developing my skills in programming and design to achieve my goal of becoming a professional software engineer.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <span>Location</span>
+                                        <p>Ehnasia City, Beni Suef, Egypt</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <div>
+                                        <span>Born</span>
+                                        <p>November 24, 2006</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <span>Education</span>
+                                        <p>Nahda University - Computer Science</p>
+                                    </div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <div>
+                                        <span>Specialization</span>
+                                        <p>Software Engineering</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Contact -->
+                        <div class="quick-contact glass-card">
+                            <h3>Quick Connect</h3>
+                            <div class="contact-methods">
+                                <a href="mailto:alaaatefelesily@gmail.com" class="contact-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="method-info">
+                                        <span>Email</span>
+                                        <p>alaaatefelesily@gmail.com</p>
+                                    </div>
+                                    <button class="copy-btn" data-text="alaaatefelesily@gmail.com">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </a>
+
+                                <a href="tel:+201156595620" class="contact-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="method-info">
+                                        <span>Phone</span>
+                                        <p>+20 115 659 5620</p>
+                                    </div>
+                                    <button class="copy-btn" data-text="+201156595620">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </a>
+
+                                <div class="contact-method">
+                                    <div class="method-icon">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                    <div class="method-info">
+                                        <span>All Platforms</span>
+                                        <p>@alaaatefelesily</p>
+                                    </div>
+                                    <button class="copy-btn" data-text="@alaaatefelesily">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Container -->
+                        <div class="map-container glass-card">
+                            <h3>My Location</h3>
+                            <div id="map"></div>
+                            <div class="location-info">
+                                <i class="fas fa-map-pin"></i>
+                                <span>Ehnasia City, Beni Suef, Egypt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Media Section -->
+        <section class="social-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Connect With Me</h2>
+                    <p>Follow my journey and stay updated with my latest projects</p>
+                </div>
+                <div class="social-grid">
+                    <a href="https://linkedin.com/in/alaaatefelesily" class="social-card linkedin" target="_blank">
+                        <div class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <h3>LinkedIn</h3>
+                        <p>Professional network and career updates</p>
+                        <span class="social-handle">@alaaatefelesily</span>
+                    </a>
+
+                    <a href="https://github.com/alaaatefelesily" class="social-card github" target="_blank">
+                        <div class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <h3>GitHub</h3>
+                        <p>Open source projects and code repositories</p>
+                        <span class="social-handle">@alaaatefelesily</span>
+                    </a>
+
+                    <a href="https://twitter.com/alaaatefelesily" class="social-card twitter" target="_blank">
+                        <div class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <h3>Twitter</h3>
+                        <p>Tech insights and daily updates</p>
+                        <span class="social-handle">@alaaatefelesily</span>
+                    </a>
+
+                    <a href="https://instagram.com/alaaatefelesily" class="social-card instagram" target="_blank">
+                        <div class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h3>Instagram</h3>
+                        <p>Behind the scenes and personal journey</p>
+                        <span class="social-handle">@alaaatefelesily</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <i class="fas fa-code"></i>
+                            <span>Alaa Atef</span>
+                        </div>
+                        <p class="footer-description">
+                            Software Engineering Student passionate about programming and design. 
+                            Always learning, always growing.
+                        </p>
+                        <div class="social-links">
+                            <a href="https://facebook.com/alaaatefelesily" class="social-link">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/alaaatefelesily" class="social-link">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com/alaaatefelesily" class="social-link">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/alaaatefelesily" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://github.com/alaaatefelesily" class="social-link">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <div class="link-group">
+                            <h4>Navigation</h4>
+                            <a href="index.html">Home</a>
+                            <a href="about.html">About Me</a>
+                            <a href="contact.html">Contact</a>
+                            <a href="links.html">Links</a>
+                            <a href="tools">tools</a>
+                        </div>
+
+                        <div class="link-group">
+                            <h4>Connect</h4>
+                            <a href="mailto:alaaatefelesily@gmail.com">Email</a>
+                            <a href="tel:+201156595620">Phone</a>
+                            <a href="https://wa.me/201156595620">WhatsApp</a>
+                            <a href="https://t.me/alaaatefelesily">Telegram</a>
+                        </div>
+
+                        <div class="link-group">
+                            <h4>Legal</h4>
+                            <a href="privacy.html">Privacy Policy</a>
+                            <a href="terms.html">Terms of Service</a>
+                            <a href="cookies.html">Cookie Policy</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 <span>Atef Elesily.</span> All rights reserved.</p>
+                    <p>Made with <i class="fas fa-heart"></i> and <i class="fas fa-coffee"></i></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-content glass-card">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for your message. I'll get back to you within 24 hours.</p>
+            <button class="modal-btn" id="closeModal">Send Another Message</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

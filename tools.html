@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Tools Hub | Alaa Atef Elesily</title>
+    <meta name="description" content="Interactive study tools including calculator, translator, timer, color picker, and tasbeeh counter. Enhance your productivity with these professional utilities.">
+    <meta name="keywords" content="Alaa Atef Elesily, study tools, calculator, translator, timer, color picker, tasbeeh counter">
+    <meta name="author" content="Alaa Atef Elesily">
+    <link rel="stylesheet" href="tools.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="background-elements">
+        <div class="bg-pen"></div>
+        <div class="bg-clock"></div>
+        <div class="bg-book"></div>
+        <div class="bg-ruler"></div>
+    </div>
+
+    <!-- Quick Access -->
+    <div class="quick-access">
+        <button class="quick-btn theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="quick-btn scroll-top" id="scrollTop">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <div class="brand-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="brand-text">AlaaAtef</span>
+                </a>
+            </div>
+
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="links.html" class="nav-link">links</a>
+                <a href="tools.html" class="nav-link active">tools</a>
+            </div>
+
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                <span>__</span>
+                <span>__</span>
+                <span>__</span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge glass-card">
+                        <i class="fas fa-tools"></i>
+                        <span>Interactive Study Tools</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Boost Your <span class="text-gradient">Study</span> Productivity
+                    </h1>
+                    <p class="hero-description">
+                        A collection of powerful tools designed to enhance your study sessions, 
+                        improve productivity, and make learning more engaging and effective.
+                    </p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-card glass-card">
+                            <i class="fas fa-calculator"></i>
+                            <div class="stat-info">
+                                <h3>5</h3>
+                                <p>Tools Available</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <i class="fas fa-bolt"></i>
+                            <div class="stat-info">
+                                <h3>100%</h3>
+                                <p>Free to Use</p>
+                            </div>
+                        </div>
+                        <div class="stat-card glass-card">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div class="stat-info">
+                                <h3>Responsive</h3>
+                                <p>All Devices</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tools Grid Section -->
+        <section class="tools-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Study Tools</h2>
+                    <p>Choose from our collection of interactive utilities</p>
+                </div>
+
+                <div class="tools-grid">
+                    <!-- Calculator -->
+                    <div class="tool-card glass-card" data-tool="calculator">
+                        <div class="tool-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Scientific Calculator</h3>
+                        <p>Advanced calculator with scientific functions</p>
+                        <div class="tool-badge">Math</div>
+                    </div>
+
+                    <!-- Translator -->
+                    <div class="tool-card glass-card" data-tool="translator">
+                        <div class="tool-icon">
+                            <i class="fas fa-language"></i>
+                        </div>
+                        <h3>Language Translator</h3>
+                        <p>Translate between multiple languages</p>
+                        <div class="tool-badge">Language</div>
+                    </div>
+
+                    <!-- Timer -->
+                    <div class="tool-card glass-card" data-tool="timer">
+                        <div class="tool-icon">
+                            <i class="fas fa-stopwatch"></i>
+                        </div>
+                        <h3>Professional Timer</h3>
+                        <p>Stopwatch, countdown, and Pomodoro timer</p>
+                        <div class="tool-badge">Productivity</div>
+                    </div>
+
+                    <!-- Color Picker -->
+                    <div class="tool-card glass-card" data-tool="color">
+                        <div class="tool-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>Color Picker</h3>
+                        <p>Pick colors and get their codes</p>
+                        <div class="tool-badge">Design</div>
+                    </div>
+
+                    <!-- Tasbeeh Counter -->
+                    <div class="tool-card glass-card" data-tool="tasbeeh">
+                        <div class="tool-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3>Tasbeeh Counter</h3>
+                        <p>Count your dhikr and prayers</p>
+                        <div class="tool-badge">Spiritual</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Tool Display -->
+        <section class="active-tool-section">
+            <div class="container">
+                <div class="tool-container glass-card">
+                    <div class="tool-header">
+                        <h2 id="activeToolTitle">Select a Tool to Begin</h2>
+                        <p id="activeToolDesc">Choose any tool from the grid above to start using it</p>
+                    </div>
+
+                    <div class="tool-content" id="toolContent">
+                        <!-- Default Welcome State -->
+                        <div class="welcome-state" id="welcomeState">
+                            <div class="welcome-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3>Ready to Boost Your Study?</h3>
+                            <p>Select any tool from our collection to begin enhancing your productivity and learning experience.</p>
+                            <div class="welcome-features">
+                                <div class="feature">
+                                    <i class="fas fa-bolt"></i>
+                                    <span>Fast & Responsive</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-mobile-alt"></i>
+                                    <span>Mobile Friendly</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Privacy Focused</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Calculator Tool -->
+                        <div class="tool-interface" id="calculatorTool" style="display: none;">
+                            <div class="calculator">
+                                <div class="calculator-display">
+                                    <div class="display-history" id="calcHistory"></div>
+                                    <div class="display-current" id="calcDisplay">0</div>
+                                </div>
+                                <div class="calculator-buttons">
+                                    <button class="calc-btn func" data-action="clear">C</button>
+                                    <button class="calc-btn func" data-action="clear-entry">CE</button>
+                                    <button class="calc-btn func" data-action="backspace">⌫</button>
+                                    <button class="calc-btn op" data-action="divide">÷</button>
+                                    
+                                    <button class="calc-btn sci" data-action="power">x²</button>
+                                    <button class="calc-btn sci" data-action="square-root">√</button>
+                                    <button class="calc-btn sci" data-action="percentage">%</button>
+                                    <button class="calc-btn op" data-action="multiply">×</button>
+                                    
+                                    <button class="calc-btn num" data-number="7">7</button>
+                                    <button class="calc-btn num" data-number="8">8</button>
+                                    <button class="calc-btn num" data-number="9">9</button>
+                                    <button class="calc-btn op" data-action="subtract">−</button>
+                                    
+                                    <button class="calc-btn num" data-number="4">4</button>
+                                    <button class="calc-btn num" data-number="5">5</button>
+                                    <button class="calc-btn num" data-number="6">6</button>
+                                    <button class="calc-btn op" data-action="add">+</button>
+                                    
+                                    <button class="calc-btn num" data-number="1">1</button>
+                                    <button class="calc-btn num" data-number="2">2</button>
+                                    <button class="calc-btn num" data-number="3">3</button>
+                                    <button class="calc-btn op equals" data-action="equals">=</button>
+                                    
+                                    <button class="calc-btn num zero" data-number="0">0</button>
+                                    <button class="calc-btn num" data-number=".">.</button>
+                                    <button class="calc-btn sci" data-action="plus-minus">±</button>
+                                    <button class="calc-btn sci" data-action="inverse">1/x</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Translator Tool -->
+                        <div class="tool-interface" id="translatorTool" style="display: none;">
+                            <div class="translator">
+                                <div class="translator-controls">
+                                    <div class="language-selector">
+                                        <div class="lang-group">
+                                            <label for="sourceLang">From:</label>
+                                            <select id="sourceLang">
+                                                <option value="auto">Detect Language</option>
+                                                <option value="en">English</option>
+                                                <option value="ar">Arabic</option>
+                                                <option value="es">Spanish</option>
+                                                <option value="fr">French</option>
+                                                <option value="de">German</option>
+                                                <option value="it">Italian</option>
+                                                <option value="pt">Portuguese</option>
+                                                <option value="ru">Russian</option>
+                                                <option value="zh">Chinese</option>
+                                                <option value="ja">Japanese</option>
+                                                <option value="ko">Korean</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <button class="swap-langs" id="swapLangs" title="Swap languages">
+                                            <i class="fas fa-exchange-alt"></i>
+                                        </button>
+                                        
+                                        <div class="lang-group">
+                                            <label for="targetLang">To:</label>
+                                            <select id="targetLang">
+                                                <option value="ar">Arabic</option>
+                                                <option value="en">English</option>
+                                                <option value="es">Spanish</option>
+                                                <option value="fr">French</option>
+                                                <option value="de">German</option>
+                                                <option value="it">Italian</option>
+                                                <option value="pt">Portuguese</option>
+                                                <option value="ru">Russian</option>
+                                                <option value="zh">Chinese</option>
+                                                <option value="ja">Japanese</option>
+                                                <option value="ko">Korean</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="translation-area">
+                                    <div class="input-area">
+                                        <textarea id="sourceText" placeholder="Enter text to translate..."></textarea>
+                                        <div class="text-actions">
+                                            <button class="text-action" id="clearSource">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                            <span class="char-count" id="sourceCharCount">0</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="translate-action">
+                                        <button class="translate-btn" id="translateBtn">
+                                            <i class="fas fa-language"></i>
+                                            Translate
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="output-area">
+                                        <div id="translatedText" class="translated-text">
+                                            Translation will appear here...
+                                        </div>
+                                        <div class="text-actions">
+                                            <button class="text-action" id="speakTranslation" title="Listen">
+                                                <i class="fas fa-volume-up"></i>
+                                            </button>
+                                            <button class="text-action" id="copyTranslation" title="Copy">
+                                                <i class="fas fa-copy"></i>
+                                            </button>
+                                            <span class="char-count" id="targetCharCount">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="translation-info" id="translationInfo"></div>
+                            </div>
+                        </div>
+
+                        <!-- Timer Tool -->
+                        <div class="tool-interface" id="timerTool" style="display: none;">
+                            <div class="timer-app">
+                                <div class="timer-tabs">
+                                    <button class="timer-tab active" data-tab="stopwatch">Stopwatch</button>
+                                    <button class="timer-tab" data-tab="countdown">Countdown</button>
+                                    <button class="timer-tab" data-tab="pomodoro">Pomodoro</button>
+                                </div>
+                                
+                                <div class="timer-display">
+                                    <div class="time" id="timeDisplay">00:00:00</div>
+                                    <div class="timer-controls">
+                                        <button class="timer-btn start" id="startTimer">
+                                            <i class="fas fa-play"></i>
+                                        </button>
+                                        <button class="timer-btn pause" id="pauseTimer" style="display: none;">
+                                            <i class="fas fa-pause"></i>
+                                        </button>
+                                        <button class="timer-btn lap" id="lapTimer">
+                                            <i class="fas fa-flag"></i>
+                                        </button>
+                                        <button class="timer-btn reset" id="resetTimer">
+                                            <i class="fas fa-redo"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="timer-setup" id="timerSetup">
+                                    <!-- Countdown Setup -->
+                                    <div class="setup-panel countdown-setup" id="countdownSetup">
+                                        <h4>Set Countdown Time</h4>
+                                        <div class="time-inputs">
+                                            <div class="time-input-group">
+                                                <input type="number" id="hoursInput" min="0" max="23" value="0">
+                                                <label>Hours</label>
+                                            </div>
+                                            <div class="time-input-group">
+                                                <input type="number" id="minutesInput" min="0" max="59" value="10">
+                                                <label>Minutes</label>
+                                            </div>
+                                            <div class="time-input-group">
+                                                <input type="number" id="secondsInput" min="0" max="59" value="0">
+                                                <label>Seconds</label>
+                                            </div>
+                                        </div>
+                                        <button class="set-time-btn" id="setTimeBtn">Set Countdown</button>
+                                    </div>
+                                    
+                                    <!-- Pomodoro Setup -->
+                                    <div class="setup-panel pomodoro-setup" id="pomodoroSetup" style="display: none;">
+                                        <h4>Pomodoro Settings</h4>
+                                        <div class="pomodoro-inputs">
+                                            <div class="pomodoro-input-group">
+                                                <label>Focus Time (minutes)</label>
+                                                <input type="number" id="focusTime" min="1" max="60" value="25">
+                                            </div>
+                                            <div class="pomodoro-input-group">
+                                                <label>Short Break (minutes)</label>
+                                                <input type="number" id="shortBreak" min="1" max="30" value="5">
+                                            </div>
+                                            <div class="pomodoro-input-group">
+                                                <label>Long Break (minutes)</label>
+                                                <input type="number" id="longBreak" min="1" max="60" value="15">
+                                            </div>
+                                            <div class="pomodoro-input-group">
+                                                <label>Sessions before Long Break</label>
+                                                <input type="number" id="sessionsBeforeLong" min="1" max="10" value="4">
+                                            </div>
+                                        </div>
+                                        <button class="set-time-btn" id="setPomodoroBtn">Apply Settings</button>
+                                    </div>
+                                </div>
+
+                                <div class="timer-info">
+                                    <div class="pomodoro-info" id="pomodoroInfo" style="display: none;">
+                                        <div class="pomodoro-phase" id="pomodoroPhase">Focus Time</div>
+                                        <div class="pomodoro-session">Session: <span id="currentSession">1</span>/<span id="totalSessions">4</span></div>
+                                    </div>
+                                    
+                                    <div class="laps-container" id="lapsContainer">
+                                        <h4>Laps</h4>
+                                        <div class="laps-list" id="lapsList"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Color Picker Tool -->
+                        <div class="tool-interface" id="colorTool" style="display: none;">
+                            <div class="color-picker-app">
+                                <div class="color-controls">
+                                    <div class="color-preview" id="colorPreview">
+                                        <div class="selected-color" id="selectedColor"></div>
+                                    </div>
+                                    
+                                    <div class="color-inputs">
+                                        <div class="color-input-group">
+                                            <label for="colorHex">HEX</label>
+                                            <input type="text" id="colorHex" value="#6C63FF">
+                                        </div>
+                                        
+                                        <div class="color-input-group">
+                                            <label for="colorR">R</label>
+                                            <input type="number" id="colorR" min="0" max="255" value="108">
+                                        </div>
+                                        
+                                        <div class="color-input-group">
+                                            <label for="colorG">G</label>
+                                            <input type="number" id="colorG" min="0" max="255" value="99">
+                                        </div>
+                                        
+                                        <div class="color-input-group">
+                                            <label for="colorB">B</label>
+                                            <input type="number" id="colorB" min="0" max="255" value="255">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="color-actions">
+                                        <button class="color-action" id="copyHex">
+                                            <i class="fas fa-copy"></i> Copy HEX
+                                        </button>
+                                        <button class="color-action" id="copyRGB">
+                                            <i class="fas fa-copy"></i> Copy RGB
+                                        </button>
+                                        <button class="color-action" id="randomColor">
+                                            <i class="fas fa-random"></i> Random
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="color-palette">
+                                    <h4>Color Palette</h4>
+                                    <div class="palette-grid" id="paletteGrid">
+                                        <!-- Color palette will be generated here -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasbeeh Counter Tool -->
+                        <div class="tool-interface" id="tasbeehTool" style="display: none;">
+                            <div class="tasbeeh-app">
+                                <div class="tasbeeh-display">
+                                    <div class="counter" id="tasbeehCounter">0</div>
+                                    <div class="tasbeeh-target">Target: <span id="tasbeehTarget">33</span></div>
+                                </div>
+                                
+                                <div class="tasbeeh-controls">
+                                    <button class="tasbeeh-btn count-btn" id="countBtn">
+                                        <i class="fas fa-hand-point-up"></i>
+                                    </button>
+                                    <button class="tasbeeh-btn reset-btn" id="tasbeehReset">
+                                        <i class="fas fa-redo"></i>
+                                    </button>
+                                </div>
+                                
+                                <div class="tasbeeh-presets">
+                                    <h4>Common Dhikr</h4>
+                                    <div class="preset-buttons">
+                                        <button class="preset-btn" data-dhikr="Subhanallah" data-target="33">سبحان الله (33)</button>
+                                        <button class="preset-btn" data-dhikr="Alhamdulillah" data-target="33">الحمد لله (33)</button>
+                                        <button class="preset-btn" data-dhikr="Allahu Akbar" data-target="33">الله أكبر (33)</button>
+                                        <button class="preset-btn" data-dhikr="Astaghfirullah" data-target="100">أستغفر الله (100)</button>
+                                        <button class="preset-btn" data-dhikr="La ilaha illallah" data-target="100">لا إله إلا الله (100)</button>
+                                    </div>
+                                </div>
+                                
+                                <div class="tasbeeh-settings">
+                                    <div class="setting-group">
+                                        <label for="customTarget">Custom Target:</label>
+                                        <input type="number" id="customTarget" min="1" max="1000" value="33">
+                                        <button class="set-target-btn" id="setTargetBtn">Set</button>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label for="vibration">Vibration:</label>
+                                        <input type="checkbox" id="vibration" checked>
+                                    </div>
+                                </div>
+                                
+                                <div class="tasbeeh-history">
+                                    <h4>Today's Progress</h4>
+                                    <div class="history-stats">
+                                        <div class="stat">
+                                            <span class="stat-value" id="todayCount">0</span>
+                                            <span class="stat-label">Today</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-value" id="totalCount">0</span>
+                                            <span class="stat-label">Total</span>
+                                        </div>
+                                        <div class="stat">
+                                            <span class="stat-value" id="completedCount">0</span>
+                                            <span class="stat-label">Completed</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Tools Access -->
+        <section class="quick-tools-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Quick Access</h2>
+                    <p>Your most used tools</p>
+                </div>
+                <div class="quick-tools-grid" id="quickToolsGrid">
+                    <!-- Dynamically populated with frequently used tools -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>StudyTools</span>
+                        </div>
+                        <p class="footer-description">
+                            A collection of interactive tools designed to boost productivity 
+                            and enhance learning experiences for students and professionals.
+                        </p>
+                        <div class="footer-social">
+                            <a href="https://github.com/alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="https://twitter.com/alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://facebook.com/alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://instagram.com/alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://youtube.com/@alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://t.me/alaaatefelesily" class="social-link" target="_blank">
+                                <i class="fab fa-telegram"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                   <div class="footer-links">
+                        <div class="link-group">
+                            <h4>Navigation</h4>
+                            <a href="index.html">Home</a>
+                            <a href="about.html">About Me</a>
+                            <a href="contact.html">Contact</a>
+                            <a href="links.html">All Links</a>
+                            <a href="tools.html">tools</a>
+                        </div>
+
+                        <div class="link-group">
+                            <h4>Tools</h4>
+                            <a href="#calculator">Calculator</a>
+                            <a href="#translator">Translator</a>
+                            <a href="#timer">Timer</a>
+                            <a href="#color">Color Picker</a>
+                            <a href="#tasbeeh">Tasbeeh Counter</a>
+                        </div>
+
+                        <div class="link-group">
+                            <h4>Support</h4>
+                            <a href="mailto:alaaatefelesily@gmail.com">Help</a>
+                            <a href="#">Feedback</a>
+                            <a href="#">About Developer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Alaa Atef Elesily. All rights reserved.</p>
+                    <p>Nahda University - Faculty of Computer Science | Software Engineering</p>
+                    <p>Made with <i class="fas fa-heart"></i> for better learning experiences</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="tools.js"></script>
+</body>
+</html>

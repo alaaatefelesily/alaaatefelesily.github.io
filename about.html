@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn more about Alaa Atef Elesily - Software Engineering Student passionate about programming, design, and technology.">
+    <meta name="keywords" content="Alaa Atef, About, Software Engineering, Programming, Web Development, Python, JavaScript">
+    <meta name="author" content="Alaa Atef Elesily">
+    <title>About - Alaa Atef Elesily | Software Engineering Student</title>
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <!-- أيقونات التواصل العائمة -->
+    <div class="floating-social">
+        <a href="https://wa.me/201156595620" class="floating-btn whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://linkedin.com/in/alaaatefelesily" class="floating-btn linkedin" target="_blank">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://t.me/alaaatefelesily" class="floating-btn telegram" target="_blank">
+            <i class="fab fa-telegram"></i>
+        </a>
+        <a href="https://github.com/alaaatefelesily" class="floating-btn github" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+        <a href="https://twitter.com/alaaatefelesily" class="floating-btn twitter" target="_blank">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://instagram.com/alaaatefelesily" class="floating-btn instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-icon">⚡</span>
+                    <span class="logo-text">Alaa Atef</span>
+                </a>
+            </div>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link active">
+                            <i class="fas fa-user"></i>
+                            <span>About</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="contact.html" class="nav-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Contact</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="links.html" class="nav-link">
+                            <i class="fas fa-link"></i>
+                            <span>Links</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tools.html" class="nav-link">
+                            <i class="fas fa-gamepad"></i>
+                            <span>tools</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button class="theme-toggle" id="theme-toggle">
+                    <span class="theme-icon">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-moon"></i>
+                    </span>
+                    <span class="theme-text">Theme</span>
+                </button>
+                
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main">
+        <!-- قسم البطل -->
+        <section class="about-hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-badge glass-card">
+                        <span>👨‍💻 About Me , Alaa</span>
+                    </div>
+                    
+                    <h1 class="hero-title">
+                        My Journey in <span class="highlight">Software Engineering</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Passionate developer, continuous learner, and technology enthusiast
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الملف الشخصي -->
+        <section class="profile-section">
+            <div class="container">
+                <div class="profile-grid">
+                    <!-- الصورة والتفاصيل الأساسية -->
+                    <div class="profile-main glass-card">
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <div class="avatar-image">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="avatar-status">
+                                    <span class="status-dot"></span>
+                                    <span class="status-text">Available for projects</span>
+                                </div>
+                            </div>
+                            
+                            <div class="profile-info">
+                                <h1>Alaa Atef Elesily</h1>
+                                <p class="profile-title">Software Engineering Student</p>
+                                <p class="profile-bio">
+                                    I am passionate about developing my skills in programming and design to achieve my goal of becoming a professional software engineer.
+                                </p>
+                                
+                                <div class="profile-stats">
+                                    <div class="stat">
+                                        <span class="stat-number">1+</span>
+                                        <span class="stat-label">Years Learning</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">5+</span>
+                                        <span class="stat-label">Projects</span>
+                                    </div>
+                                    <div class="stat">
+                                        <span class="stat-number">2+</span>
+                                        <span class="stat-label">Technologies</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-details">
+                            <div class="detail-grid">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <div>
+                                        <span class="detail-label">Location</span>
+                                        <span class="detail-value">Ehnasia City, Beni Suef, Egypt</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-birthday-cake"></i>
+                                    <div>
+                                        <span class="detail-label">Birth Date</span>
+                                        <span class="detail-value">November 24, 2006</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <span class="detail-label">Education</span>
+                                        <span class="detail-value">Nahda University - Computer Science</span>
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <div>
+                                        <span class="detail-label">Specialization</span>
+                                        <span class="detail-value">Software Engineering</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- معلومات التواصل -->
+                    <div class="profile-sidebar">
+                        <div class="contact-card glass-card">
+                            <h3>Get In Touch</h3>
+                            <div class="contact-methods">
+                                <a href="mailto:alaaatefelesily@gmail.com" class="contact-method">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <span>Email</span>
+                                        <small>alaaatefelesily@gmail.com</small>
+                                    </div>
+                                </a>
+                                <a href="tel:+201156595620" class="contact-method">
+                                    <i class="fas fa-phone"></i>
+                                    <div>
+                                        <span>Phone</span>
+                                        <small>+20 1156595620</small>
+                                    </div>
+                                </a>
+                                <div class="contact-method">
+                                    <i class="fas fa-globe"></i>
+                                    <div>
+                                        <span>All Platforms</span>
+                                        <small>@alaaatefelesily</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="social-profiles">
+                                <h4>Follow Me</h4>
+                                <div class="social-grid">
+                                    <a href="https://facebook.com/alaaatefelesily" class="social-profile" target="_blank">
+                                        <i class="fab fa-facebook-f"></i>
+                                        <span>Facebook</span>
+                                    </a>
+                                    <a href="https://twitter.com/alaaatefelesily" class="social-profile" target="_blank">
+                                        <i class="fab fa-twitter"></i>
+                                        <span>Twitter</span>
+                                    </a>
+                                    <a href="https://instagram.com/alaaatefelesily" class="social-profile" target="_blank">
+                                        <i class="fab fa-instagram"></i>
+                                        <span>Instagram</span>
+                                    </a>
+                                    <a href="https://linkedin.com/in/alaaatefelesily" class="social-profile" target="_blank">
+                                        <i class="fab fa-linkedin-in"></i>
+                                        <span>LinkedIn</span>
+                                    </a>
+                                    <a href="https://github.com/alaaatefelesily" class="social-profile" target="_blank">
+                                        <i class="fab fa-github"></i>
+                                        <span>GitHub</span>
+                                    </a>
+                                    <a href="https://t.me/alaaatefelesily" class="social-profile" target="_blank">
+                                        <i class="fab fa-telegram"></i>
+                                        <span>Telegram</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- الخريطة -->
+                        <div class="location-card glass-card">
+                            <h3>My Location</h3>
+                            <div id="map"></div>
+                            <div class="location-info">
+                                <i class="fas fa-map-pin"></i>
+                                <span>Ehnasia City, Beni Suef, Egypt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم السيرة الذاتية -->
+        <section class="timeline-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">My Elesily Journey</h2>
+                    <p class="section-subtitle">The path that shaped my passion for technology</p>
+                </div>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">2025 - Present</div>
+                            <h3>Nahda University</h3>
+                            <p class="timeline-subtitle">Faculty of Computer Science</p>
+                            <p>Currently pursuing Software Engineering specialization, focusing on modern web technologies and software development principles.</p>
+                            <div class="timeline-tags">
+                                <span class="tag">Software Engineering</span>
+                                <span class="tag">Web Development</span>
+                                <span class="tag">Algorithms</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">2024 - 2025</div>
+                            <h3>Self-Taught Development</h3>
+                            <p class="timeline-subtitle">Intensive Learning Period</p>
+                            <p>Dedicated time to learn programming fundamentals, web technologies, and build personal projects to strengthen my skills.</p>
+                            <div class="timeline-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">HTML/CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content glass-card">
+                            <div class="timeline-date">2024 - 2025</div>
+                            <h3>Discovery Phase</h3>
+                            <p class="timeline-subtitle">Exploring Technology</p>
+                            <p>Began exploring the world of programming and discovered my passion for creating digital solutions and applications.</p>
+                            <div class="timeline-tags">
+                                <span class="tag">Programming Basics</span>
+                                <span class="tag">Problem Solving</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم المهارات -->
+        <section class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Technologies and tools I work with</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-category glass-card">
+                        <div class="category-header">
+                            <i class="fab fa-python"></i>
+                            <h3>Programming Languages</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="85"></div>
+                                </div>
+                                <span class="skill-percent">60%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="80"></div>
+                                </div>
+                                <span class="skill-percent">50%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">C++</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="70"></div>
+                                </div>
+                                <span class="skill-percent">60%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Java</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="65"></div>
+                                </div>
+                                <span class="skill-percent">55%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-code"></i>
+                            <h3>Web Development</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">HTML5</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="90"></div>
+                                </div>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">CSS3</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="85"></div>
+                                </div>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="75"></div>
+                                </div>
+                                <span class="skill-percent">70%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="70"></div>
+                                </div>
+                                <span class="skill-percent">junior</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-category glass-card">
+                        <div class="category-header">
+                            <i class="fas fa-tools"></i>
+                            <h3>Tools & Platforms</h3>
+                        </div>
+                        <div class="skills-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Git & GitHub</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="80"></div>
+                                </div>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">VS Code</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="95"></div>
+                                </div>
+                                <span class="skill-percent">75%</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Figma</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="70"></div>
+                                </div>
+                                <span class="skill-percent">junior</span>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">MongoDB</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-level="65"></div>
+                                </div>
+                                <span class="skill-percent">junior</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم الاهتمامات -->
+        <section class="interests-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Interests & Hobbies</h2>
+                    <p class="section-subtitle">What I enjoy beyond coding</p>
+                </div>
+
+                <div class="interests-grid">
+                    <div class="interest-card glass-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Web Development</h3>
+                        <p>Creating responsive and interactive web applications with modern technologies</p>
+                    </div>
+
+                    <div class="interest-card glass-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Apps</h3>
+                        <p>Exploring cross-platform mobile development and user experience design</p>
+                    </div>
+
+                    <div class="interest-card glass-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <h3>UI/UX Design</h3>
+                        <p>Designing intuitive and beautiful user interfaces that provide great experiences</p>
+                    </div>
+
+                    <div class="interest-card glass-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI & Machine Learning</h3>
+                        <p>Learning about artificial intelligence and its applications in modern technology</p>
+                    </div>
+
+                    <div class="interest-card glass-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h3>Game Development</h3>
+                        <p>Creating interactive games and exploring game design principles</p>
+                    </div>
+
+                    <div class="interest-card glass-card">
+                        <div class="interest-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Continuous Learning</h3>
+                        <p>Always exploring new technologies and improving my skills through practice</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <span class="logo-icon">⚡</span>
+                            <span class="logo-text">Alaa Atef</span>
+                        </div>
+                        <p class="footer-desc">
+                            Software Engineering Student passionate about programming and design. 
+                            Always learning, always growing.
+                        </p>
+                        <div class="footer-social">
+                            <span class="social-username">@alaaatefelesily</span>
+                            <div class="social-links">
+                                <a href="https://facebook.com/alaaatefelesily" class="social-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com/alaaatefelesily" class="social-link">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://instagram.com/alaaatefelesily" class="social-link">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="https://linkedin.com/in/alaaatefelesily" class="social-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="https://github.com/alaaatefelesily" class="social-link">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <div class="link-group">
+                            <h4>Navigation</h4>
+                            <a href="index.html">Home</a>
+                            <a href="about.html">About</a>
+                            <a href="contact.html">Contact</a>
+                            <a href="links.html">Links</a>
+                            <a href="tools.html">tools</a>
+                        </div>
+
+                        <div class="link-group">
+                            <h4>Contact</h4>
+                            <a href="mailto:alaaatefelesily@gmail.com">Email</a>
+                            <a href="tel:+201156595620">Phone</a>
+                            <a href="https://wa.me/201156595620">WhatsApp</a>
+                            <a href="https://t.me/alaaatefelesily">Telegram</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>&copy; 2023 Alaa Atef Elesily. All rights reserved.</p>
+                    <p>Born to code, driven to innovate</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="about.js"></script>
+</body>
+</html>
