@@ -1,385 +1,97 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alaa Atef Elesily - Software Engineering Student passionate about programming and design. Specializing in Python, JavaScript, HTML, CSS, C++.">
-    <meta name="keywords" content="Alaa Atef,alaa atef elesily , Software Engineering,علاء عاطف العسيلي ,علاء, علاء العسيلي ,المبرمج علاء العسيلي , Programming, Web Development, Python, JavaScript, HTML, CSS, C++">
-    <meta name="google-site-verification" content="rBFwU4YFyeGTYUR-Z8wLilzkWlZBJ4c_uj366ZjH0Ek" />
-    <meta name="author" content="Alaa Atef Elesily">
-    <title>Alaa Atef Elesily | Software Engineering Student</title>
-    <link rel="stylesheet" href="home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-N7KVLJHV');</script>
-<!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XB0G6KBP24"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XB0G6KBP24');
-</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alaa Atef Elesily — Computer Science Student & Aspiring Developer">
+<title>Alaa Atef Elesily | Computer Science Student</title>
+<link rel="stylesheet" href="global.css">
+<script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
-   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N7KVLJHV"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <!-- أيقونات التواصل العائمة -->
-    <div class="floating-social">
-        <a href="https://wa.me/201156595620" class="floating-btn whatsapp" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://linkedin.com/in/alaaatefelesily" class="floating-btn linkedin" target="_blank">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-        <a href="https://t.me/alaaatefelesily" class="floating-btn telegram" target="_blank">
-            <i class="fab fa-telegram"></i>
-        </a>
-        <a href="https://github.com/alaaatefelesily" class="floating-btn github" target="_blank">
-            <i class="fab fa-github"></i>
-        </a>
-    </div>
+<canvas id="ambient-canvas" aria-hidden="true"></canvas>
 
-    <!-- Header أنيق -->
-    <header class="header">
-        <div class="header-container">
-            <!-- الشعار -->
-            <div class="logo">
-                <a href="index.html" class="logo-link">
-                    <span class="logo-icon">⚡</span>
-                    <span class="logo-text">Alaa Atef</span>
-                </a>
-            </div>
-
-            <!-- قائمة التنقل -->
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active">
-                            <i class="fas fa-home"></i>
-                            <span>Home</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">
-                            <i class="fas fa-user"></i>
-                            <span>About</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">
-                            <i class="fas fa-envelope"></i>
-                            <span>Contact</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="links.html" class="nav-link">
-                            <i class="fas fa-link"></i>
-                            <span>Links</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="tools.html" class="nav-link">
-                            <i class="fas fa-gamepad"></i>
-                            <span>tools</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-
-            <!-- زر الوضع الليلي/النهاري -->
-            <div class="header-actions">
-                <button class="theme-toggle" id="theme-toggle">
-                    <span class="theme-icon">
-                        <i class="fas fa-sun"></i>
-                        <i class="fas fa-moon"></i>
-                    </span>
-                    <span class="theme-text">Theme</span>
-                </button>
-                
-                <!-- زر القائمة للجوال -->
-                <button class="mobile-menu-btn" id="mobile-menu-btn">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+    <header class="site-header">
+      <nav class="nav container">
+        <a class="brand" href="index.html"><span class="brand-mark"><i data-lucide="code"></i></span><span>dev.alaa</span></a>
+        <div class="nav-links">
+          <a class="active" href="index.html">Home</a>
+          <a class="" href="about.html">About</a>
+          <a class="" href="contact.html">Contact</a>
+          <a class="" href="links.html">Links</a>
+          <a class="" href="tools.html">Tools</a>
         </div>
+        <div class="nav-actions">
+          <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+          <button class="icon-btn menu-btn" data-menu aria-label="Open menu"><i data-lucide="menu"></i></button>
+        </div>
+      </nav>
     </header>
+    
+<main>
+<section class="hero">
+<div class="container hero-grid">
+  <div class="reveal">
+    <span class="eyebrow"><span class="dot"></span> Available for projects</span>
+    <h1> Hello, I'm<br><span class="gradient-text">Alaa Atef Elesily</span> </h1>
+    <p class="lead">Software Engineering Student & Aspiring Developer</p>
+    <p class="lead">Passionate about developing my skills in programming and design to achieve my goal of becoming a professional software engineer.</p>
+    <div class="tags">
+      <span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">C++</span><span class="tag">OOP</span><span class="tag">SQL</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="contact.html"><i data-lucide="send"></i> Get In Touch</a>
+      <a class="btn btn-secondary" href="about.html"><i data-lucide="arrow-down-right"></i> View My Journey</a>
+    </div>
+  </div>
+  <div class="hero-photo-wrap reveal">
+    <div class="photo-scene" data-tilt>
+      <div class="liquid-orb"></div>
+      <div class="float-chip chip-one"><span class="chip-icon">✦</span> Creative</div>
+      <div class="float-chip chip-two"><span class="chip-icon">&lt;/&gt;</span> Developer</div>
+      <div class="float-chip chip-three"><span class="chip-icon">∞</span> Learning</div>
+      <div class="photo-card">
+        <img src="profile.jpg" alt="Alaa Atef Elesily">
+        <div class="photo-badge">⚡ Alaa Atef<small>Computer Scientist</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="main">
-        <!-- قسم البطل -->
-        <section class="hero">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <div class="hero-badge glass-card">
-                        <span>👋 Hello, I'm</span>
-                    </div>
-                    
-                    <h1 class="hero-title">
-                        <span class="title-line">Alaa Atef</span>
-                        <span class="title-line highlight">Elesily ❤️ </span>
-                    </h1>
-                    
-                    <p class="hero-subtitle">
-                        Software Engineering Student & Aspiring Developer
-                    </p>
-                    
-                    <p class="hero-description">
-                        Passionate about developing my skills in programming and design to achieve my goal of becoming a professional software engineer.
-                    </p>
+<section class="section">
+<div class="container">
+  <div class="section-head reveal"><div><span class="eyebrow">About Me</span><h2>Get to know more about my background and skills</h2></div></div>
+  <div class="grid grid-3">
+    <article class="card reveal"><div class="card-icon"><i data-lucide="heart"></i></div><h3>My Passion</h3><p>I'm deeply passionate about software development and constantly strive to learn new technologies and improve my skills.</p></article>
+    <article class="card reveal"><div class="card-icon"><i data-lucide="target"></i></div><h3>My Goal</h3><p>To become a professional software engineer and contribute to innovative projects that make a positive impact.</p></article>
+    <article class="card reveal"><div class="card-icon"><i data-lucide="compass"></i></div><h3>My Interests</h3><p>Web development, mobile apps, UI/UX design, and exploring cutting-edge technologies in the software field.</p></article>
+  </div>
+</div>
+</section>
 
-                    <!-- المهارات -->
-                    <div class="skills-preview">
-                        <div class="skills-track">
-                            <div class="skill-item">
-                                <i class="fab fa-python"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fab fa-js"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fab fa-html5"></i>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fab fa-css3-alt"></i>
-                                <span>CSS3</span>
-                            </div>
-                            <div class="skill-item">
-                                <i class="fas fa-code"></i>
-                                <span>C++</span>
-                            </div>
-                        </div>
-                    </div>
+<section class="section">
+<div class="container">
+  <div class="section-head reveal"><div><span class="eyebrow">Technologies & Tools</span><h2>Technologies I work with and tools I use daily</h2></div></div>
+  <div class="grid grid-3">
+    <article class="card reveal"><div class="card-icon"><i data-lucide="code-2"></i></div><h3>Programming</h3><div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">C++</span><span class="tag">Java</span></div></article>
+    <article class="card reveal"><div class="card-icon"><i data-lucide="globe-2"></i></div><h3>Web Development</h3><div class="tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">React</span><span class="tag">Node.js</span></div></article>
+    <article class="card reveal"><div class="card-icon"><i data-lucide="wrench"></i></div><h3>Tools & Platforms</h3><div class="tags"><span class="tag">Git</span><span class="tag">VS Code</span><span class="tag">Figma</span><span class="tag">MongoDB</span></div></article>
+  </div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div><a class="brand" href="index.html"><span class="brand-mark"><i data-lucide="code"></i></span><span>Alaa Atef</span></a>
+      <p class="footer-brand">Software Engineering Student passionate about programming and design. Always learning, always growing.</p>
+    </div>
+    <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Me</a><a href="contact.html">Contact</a><a href="links.html">Links</a><a href="tools.html">Tools</a></div>
+    <div class="footer-col"><h4>Contact</h4><a href="mailto:alaaatefelesily@gmail.com">Email</a><a href="tel:+201156595620">Phone</a><a href="https://wa.me/201156595620" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/alaaatefelesily" target="_blank" rel="noopener">Telegram</a></div>
+  </div>
+  <div class="container footer-bottom"><span>© 2026 Alaa Atef Elesily. All rights reserved.</span><span>Made with ❤️ and lots of ☕</span></div>
+</footer>
+<div class="toast"></div>
+<script src="global.js"></script>
 
-                    <!-- أزرار الإجراء -->
-                    <div class="hero-actions">
-                        <a href="contact.html" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i>
-                            Get In Touch
-                        </a>
-                        <a href="about.html" class="btn btn-secondary">
-                            <i class="fas fa-user"></i>
-                            View My Journey
-                        </a>
-                    </div>
-                </div>
-
-                <!-- البطاقة الجانبية -->
-                <div class="hero-sidebar">
-                    <div class="profile-card glass-card">
-                        <div class="card-header">
-                            <div class="avatar">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <div class="profile-info">
-                                <h3>Alaa Atef Elesily</h3>
-                                <p>Software Engineer</p>
-                            </div>
-                        </div>
-                        
-                        <div class="card-details">
-                            <div class="detail-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Ehnasia City, Beni Suef, Egypt</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-birthday-cake"></i>
-                                <span>November 24, 2006</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-graduation-cap"></i>
-                                <span>Nahda University</span>
-                            </div>
-                            <div class="detail-item">
-                                <i class="fas fa-laptop-code"></i>
-                                <span>Software Engineering</span>
-                            </div>
-                        </div>
-
-                        <div class="card-contact">
-                            <a href="mailto:alaaatefelesily@gmail.com" class="contact-link">
-                                <i class="fas fa-envelope"></i>
-                                alaaatefelesily@gmail.com
-                            </a>
-                            <a href="tel:+201156595620" class="contact-link">
-                                <i class="fas fa-phone"></i>
-                                +20 1156595620
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم المعلومات -->
-        <section class="info-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <p class="section-subtitle">Get to know more about my background and skills</p>
-                </div>
-
-                <div class="info-grid">
-                    <div class="info-card glass-card">
-                        <div class="card-icon">
-                            <i class="fas fa-rocket"></i>
-                        </div>
-                        <h3>My Passion</h3>
-                        <p>I'm deeply passionate about software development and constantly strive to learn new technologies and improve my skills.</p>
-                    </div>
-
-                    <div class="info-card glass-card">
-                        <div class="card-icon">
-                            <i class="fas fa-target"></i>
-                        </div>
-                        <h3>My Goal</h3>
-                        <p>To become a professional software engineer and contribute to innovative projects that make a positive impact.</p>
-                    </div>
-
-                    <div class="info-card glass-card">
-                        <div class="card-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <h3>My Interests</h3>
-                        <p>Web development, mobile apps, UI/UX design, and exploring cutting-edge technologies in the software field.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم الأدوات -->
-        <section class="tools-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Technologies & Tools</h2>
-                    <p class="section-subtitle">Technologies I work with and tools I use daily</p>
-                </div>
-
-                <div class="tools-grid">
-                    <div class="tool-category glass-card">
-                        <h3 class="category-title">
-                            <i class="fab fa-python"></i>
-                            Programming
-                        </h3>
-                        <div class="tools-list">
-                            <span class="tool-tag">Python</span>
-                            <span class="tool-tag">JavaScript</span>
-                            <span class="tool-tag">C++</span>
-                            <span class="tool-tag">Java</span>
-                        </div>
-                    </div>
-
-                    <div class="tool-category glass-card">
-                        <h3 class="category-title">
-                            <i class="fas fa-code"></i>
-                            Web Development
-                        </h3>
-                        <div class="tools-list">
-                            <span class="tool-tag">HTML5</span>
-                            <span class="tool-tag">CSS3</span>
-                            <span class="tool-tag">React</span>
-                            <span class="tool-tag">Node.js</span>
-                        </div>
-                    </div>
-
-                    <div class="tool-category glass-card">
-                        <h3 class="category-title">
-                            <i class="fas fa-tools"></i>
-                            Tools & Platforms
-                        </h3>
-                        <div class="tools-list">
-                            <span class="tool-tag">Git</span>
-                            <span class="tool-tag">VS Code</span>
-                            <span class="tool-tag">Figma</span>
-                            <span class="tool-tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- الفوتر -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-main">
-                    <div class="footer-brand">
-                        <div class="footer-logo">
-                            <span class="logo-icon">⚡</span>
-                            <span class="logo-text">Alaa Atef</span>
-                        </div>
-                        <p class="footer-desc">
-                            Software Engineering Student passionate about programming and design. 
-                            Always learning, always growing.
-                        </p>
-                        <div class="footer-social">
-                            <span class="social-username">@alaaatefelesily</span>
-                            <div class="social-links">
-                                <a href="https://facebook.com/alaaatefelesily" class="social-link">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a href="https://twitter.com/alaaatefelesily" class="social-link">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="https://instagram.com/alaaatefelesily" class="social-link">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a href="https://linkedin.com/in/alaaatefelesily" class="social-link">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="https://github.com/alaaatefelesily" class="social-link">
-                                    <i class="fab fa-github"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-links">
-                        <div class="link-group">
-                            <h4>Navigation</h4>
-                            <a href="index.html">Home</a>
-                            <a href="about.html">About</a>
-                            <a href="contact.html">Contact</a>
-                            <a href="links.html">Links</a>
-                            <a href="tools.html">tools</a>
-                        </div>
-
-                        <div class="link-group">
-                            <h4>Contact</h4>
-                            <a href="mailto:alaaatefelesily@gmail.com">Email</a>
-                            <a href="tel:+201156595620">Phone</a>
-                            <a href="https://wa.me/201156595620">WhatsApp</a>
-                            <a href="https://t.me/alaaatefelesily">Telegram</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="footer-bottom">
-                    <p>&copy; 2023 Alaa Atef Elesily. All rights reserved.</p>
-                    <p>Made with ❤️ and lots of ☕</p>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script src="home.js"></script>
-</body>
-
-</html>
-
-
+</body></html>
