@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Alaa Atef Elesily — Software Engineering Student & Aspiring Developer">
-<title>Study Tools Hub - Alaa Atef Elesily</title>
-<link rel="stylesheet" href="global.css">
-<script src="https://unpkg.com/lucide@latest"></script>
-</head>
+<meta name="description" content="Free online study tools by Alaa Atef Elesily: scientific calculator, Pomodoro timer, language translator, color picker and tasbeeh counter.">
+<title>Free Study Tools: Calculator, Timer, Translator | Alaa Atef Elesily</title>
+<link rel="canonical" href="https://alaaatefelesily.github.io/tools.html"><meta property="og:title" content="Free Study Tools: Calculator, Timer, Translator | Alaa Atef Elesily"><meta property="og:description" content="Free online study tools by Alaa Atef Elesily: scientific calculator, Pomodoro timer, language translator, color picker and tasbeeh counter."><meta property="og:image" content="https://alaaatefelesily.github.io/og.jpg"><meta name="twitter:card" content="summary_large_image">
+<script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){}</script>
+<link rel="stylesheet" href="global.css"><meta name="color-scheme" content="dark light">
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("ready")},3800)</script></head>
 <body>
 
     <header class="site-header">
       <nav class="nav container">
-        <a class="brand" href="index.html"><span class="brand-mark"><i data-lucide="code"></i></span><span>dev.alaa</span></a>
+        <a class="brand" href="index.html"><span class="logo">dev<i>.</i>alaa</span></a>
         <div class="nav-links" id="navMenu">
           <a class="" href="index.html">Home</a>
-          <a class="" href="about.html">About</a>
-          <a class="" href="contact.html">Contact</a>
+          <a class="" href="index.html#about">About</a>
+          <a class="" href="index.html#contact">Contact</a>
           <a class="" href="links.html">Links</a>
           <a class="active" href="tools.html">Tools</a>
         </div>
-        <div class="nav-actions">
-          <button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+        <div class="nav-actions"><button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
           <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
         </div>
       </nav>
@@ -303,13 +304,13 @@
 
 <footer class="site-footer">
   <div class="container footer-grid">
-    <div><a class="brand" href="index.html"><span class="brand-mark"><i data-lucide="code"></i></span><span>dev.alaa</span></a>
+    <div><a class="brand" href="index.html"><span class="logo">dev<i>.</i>alaa</span></a>
       <p class="footer-brand">Software Engineering Student passionate about programming and design. Always learning, always growing.</p>
     </div>
-    <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="about.html">About Me</a><a href="contact.html">Contact</a><a href="links.html">Links</a><a href="tools.html">Tools</a></div>
+    <div class="footer-col"><h4>Navigation</h4><a href="index.html">Home</a><a href="index.html#about">About Me</a><a href="index.html#contact">Contact</a><a href="links.html">Links</a><a href="tools.html">Tools</a></div>
     <div class="footer-col"><h4>Contact</h4><a href="mailto:alaaatefelesily@gmail.com">Email</a><a href="tel:+201156595620">Phone</a><a href="https://wa.me/201156595620" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/alaaatefelesily" target="_blank" rel="noopener">Telegram</a></div>
   </div>
-  <div class="container footer-bottom"><span>© 2026 Alaa Atef Elesily. All rights reserved.</span><span>Made with ❤️ and lots of ☕</span></div>
+  <div class="container footer-bottom"><span>© 2026 Alaa Atef Elesily. All rights reserved.</span><span>Built by Alaa</span></div>
 </footer>
 <div class="toast" id="toast"></div>
 
@@ -321,6 +322,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-<script src="global.js"></script>
+<script src="lenis.min.js"></script>
+<script src="global.js"></script><script src="fx.js"></script>
 <script src="tools.js"></script>
 </body></html>

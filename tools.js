@@ -44,7 +44,7 @@
     // Theme Management
     // ========================================
     function initializeTheme() {
-        const savedTheme = localStorage.getItem('theme') || 'light';
+        const savedTheme = localStorage.getItem('theme') || document.documentElement.getAttribute('data-theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
         updateThemeIcon(savedTheme);
     }
