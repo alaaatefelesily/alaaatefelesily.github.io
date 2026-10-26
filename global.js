@@ -3,7 +3,7 @@ const themeButton = document.querySelector('[data-theme-toggle]');
 const menuButton = document.querySelector('[data-menu]');
 const navLinks = document.querySelector('.nav-links');
 
-const savedTheme = localStorage.getItem('theme');
+let savedTheme=null;try{savedTheme=localStorage.getItem('theme');}catch(e){}
 root.dataset.theme = savedTheme || 'dark';
 
 function updateThemeIcon(){
@@ -16,8 +16,8 @@ updateThemeIcon();
 
 themeButton?.addEventListener('click',()=>{
   const apply=()=>{root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    localStorage.setItem('theme',root.dataset.theme);updateThemeIcon();};
-  if(!document.startViewTransition||matchMedia('(prefers-reduced-motion: reduce)').matches){apply();return;}
+    try{localStorage.setItem('theme',root.dataset.theme);}catch(e){}updateThemeIcon();};
+  if(!document.startViewTransition||false){apply();return;}
   const r=themeButton.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,
     end=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
   root.classList.add('tt');
@@ -28,8 +28,14 @@ themeButton?.addEventListener('click',()=>{
 });
 
 menuButton?.addEventListener('click',()=>{
-  navLinks?.classList.toggle('open');
+  const o=navLinks?.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded',o?'true':'false');
 });
+document.addEventListener('click',e=>{
+  if(navLinks?.classList.contains('open')&&!e.target.closest('.site-header')){navLinks.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');}
+});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&navLinks?.classList.contains('open')){navLinks.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');menuButton?.focus();}});
+addEventListener('scroll',()=>{if(navLinks?.classList.contains('open')){navLinks.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');}},{passive:true});
 
 document.querySelectorAll('.nav-links a').forEach(a=>{
   a.addEventListener('click',()=>navLinks?.classList.remove('open'));
@@ -72,7 +78,7 @@ document.querySelectorAll('.card').forEach(card=>{
 /* Subtle 3D tilt for the portrait. */
 document.querySelectorAll('[data-tilt]').forEach(el=>{
   el.addEventListener('pointermove',e=>{
-    if(e.pointerType==='touch'||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if(e.pointerType==='touch'||false) return;
     const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
     el.style.transform=`perspective(1000px) rotateY(${x*7}deg) rotateX(${-y*6}deg)`;
   });
@@ -84,7 +90,7 @@ const canvas=document.getElementById('ambient-canvas');
 if(canvas){
   const ctx=canvas.getContext('2d');
   const isMobile=matchMedia('(max-width:760px)').matches;
-  const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion=false;
   let w=innerWidth,h=innerHeight,dpr=Math.min(devicePixelRatio||1,2), particles=[];
   let lastWidth=innerWidth, running=!document.hidden;
 
@@ -150,7 +156,7 @@ document.querySelectorAll('.progress').forEach(p=>observer.observe(p));
 
 /* ===== Smooth, inertial scrolling + smooth anchor navigation (Lenis) ===== */
 (()=>{
-  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduce=false;
   const bar=document.createElement('div');bar.className='scroll-bar';bar.setAttribute('aria-hidden','true');document.body.appendChild(bar);
   const setBar=()=>{const m=root.scrollHeight-innerHeight;root.style.setProperty('--sp',m>0?Math.min(1,Math.max(0,scrollY/m)).toFixed(4):0);};
   addEventListener('scroll',setBar,{passive:true});addEventListener('resize',setBar);setBar();

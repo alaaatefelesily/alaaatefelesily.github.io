@@ -139,7 +139,7 @@ a.tag:hover{color:var(--text)}
 .footer-grid{grid-template-columns:1fr}.footer-bottom{flex-direction:column;gap:6px}.hero{min-height:0}.platform-handle{display:none}
 .card,.site-header,.stat{-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%)}
 }
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}.hero .enter,.reveal{opacity:1;transform:none}}
+
 [data-theme=dark] .portrait-tag{background:rgba(10,10,12,.6)!important}
 
 /* ===== Apple-style scroll storytelling ===== */
@@ -180,7 +180,7 @@ a.tag:hover{color:var(--text)}
 .nav-links a.on{color:var(--text);background:var(--glass-2);box-shadow:inset 0 1px 0 var(--hi),0 2px 8px var(--lo)}
 @media(max-width:950px){.pin{height:200svh}.pwrap{transform:scale(calc(1 + var(--p,0)*.12));width:min(300px,70%)}.stage .hero-grid{gap:24px}.hero-copy{text-align:center}.hero-copy .hero-actions,.hero-copy .tags{justify-content:center}.hero-copy .lead{margin:auto}.cue{display:none}.about-grid,.contact-grid{grid-template-columns:1fr}.skills-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:620px){.skills-grid{grid-template-columns:1fr}.stage{padding-top:76px}.hero-copy h1{font-size:2.9rem}.hero-copy .tags{display:none}}
-@media(prefers-reduced-motion:reduce){.hero-copy,.pwrap,.pframe img,.pcap{transform:none!important;opacity:1!important}.words span{opacity:1}.pin{height:auto}.stage{position:static;height:auto;min-height:100svh}.mtrack{animation:none}}
+
 /* fit hero to viewport height */
 .pwrap{width:min(430px,86%,calc((100svh - 190px)*.8));transform:translate3d(calc(var(--p,0)*var(--dir,1)*-26vw),calc(var(--p,0)*-10px),0) scale(calc(1 + var(--p,0)*.24))}
 .hero-copy h1{font-size:clamp(2.8rem,min(7.2vw,12svh),6.2rem);margin:16px 0 10px}
@@ -327,14 +327,7 @@ html.lenis body {
  .site-header{top:calc(10px + env(safe-area-inset-top))}
 }
 @media(hover:none){.card:hover,.btn:hover,.social:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){
- #top .enter{opacity:1;transform:none;animation:none}
- .pin-x{height:auto!important}
- .pin-x .stage{position:static;height:auto;padding:30px 0 60px}
- .jtrack{width:100%;overflow-x:auto;transform:none!important;scroll-snap-type:x proximity;padding-bottom:10px}
- .jcard{scroll-snap-align:center}
- .scroll-bar{display:none}.nav-pill.ready{transition:none}
-}
+
 
 /* static trip grid */
 .jgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -361,7 +354,7 @@ html.lenis body {
 [data-theme=dark] .b-x .ic,[data-theme=dark] .b-threads .ic{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
 @media(hover:none){.social.icon-only::after{display:none}}
 @media(max-width:620px){.social.icon-only{width:44px;height:44px}.socials ul{gap:8px}}
-@media(prefers-reduced-motion:reduce){.reveal{filter:none;transform:none;opacity:1}#top .hero-copy{filter:none}}
+
 
 /* ===================================================================
    v6 · MONO + LIME — black / white / lime (highlights) / periwinkle
@@ -484,7 +477,7 @@ body::before,body::after{opacity:.9}
 @keyframes up{to{transform:none}}@keyframes ld{to{transform:scaleX(1)}}
 html.js:not(.ready) .enter{animation-play-state:paused}
 @media(hover:none),(pointer:coarse){.cur-dot,.cur-ring{display:none}}
-@media(prefers-reduced-motion:reduce){.grain,.loader,.cur-dot,.cur-ring{display:none}.ch{transform:none;opacity:1;transition:none}.reveal,.about-photo.reveal,.jcard.reveal{clip-path:none;transform:none;filter:none;opacity:1}.pimg,.p-scan,.orbit svg,.chip,.card::after{animation:none}.hl::after{transform:scaleX(1)}}
+
 
 #top .pwrap.enter{opacity:0;transform:translate3d(calc(var(--p,0)*var(--dir,1)*-27vw),calc(var(--p,0)*-10px),0) scale(calc(1 + var(--p,0)*.22));animation:enterP 1.5s var(--ease) forwards;animation-delay:calc(var(--i,0)*90ms + 200ms)}
 @keyframes enterP{from{opacity:0;translate:0 60px;scale:.9}to{opacity:1;translate:0 0;scale:1}}
@@ -516,7 +509,7 @@ html.tt::view-transition-old(root){z-index:1}html.tt::view-transition-new(root){
 :root{--g1:#5aa000;--g2:#6b5bff;--g3:#0a0a0a}[data-theme=dark]{--g1:#c6ff3d;--g2:#9d90ff;--g3:#ffffff}
 @keyframes wflow{to{background-position:300% 0}}
 @keyframes wbob{50%{translate:0 -.07em}}
-@media(prefers-reduced-motion:reduce){#top h1.in .ch{animation:none}}
+
 .orbit::before{content:"";position:absolute;inset:4px;border-radius:50%;background:rgba(0,0,0,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);box-shadow:0 0 0 1px rgba(255,255,255,.18)}
 .orbit svg{position:relative;z-index:1}.orbit text{fill:#c6ff3d}.orbit::after{color:#fff;z-index:2}
 
@@ -546,7 +539,7 @@ html.tt::view-transition-old(root){z-index:1}html.tt::view-transition-new(root){
 .brand:hover .bm-dot{fill:#000}
 .site-footer .brand-text b{font-size:1.1rem}
 @media(max-width:480px){.brand-text small{display:none}.brand-text b{font-size:.98rem}}
-@media(prefers-reduced-motion:reduce){.bm-a{animation:none;stroke-dashoffset:0}.brand-mark::after,.bm-dot{animation:none}}
+
 
 /* loader with the full name */
 .loader{flex-direction:column}
@@ -581,7 +574,7 @@ html.js:not(.ready) #top .pimg,html.js:not(.ready) #top .p-main{animation-play-s
 .pimg.on .p-glare{opacity:1}
 .chip{box-shadow:0 14px 34px -14px rgba(0,0,0,.55)}
 .orbit{filter:drop-shadow(0 10px 22px rgba(0,0,0,.35))}
-@media(prefers-reduced-motion:reduce){.pglow,.pdots,#top .pframe,#top .pframe::after,.p-shine,#top .pimg,#top .pframe .pimg img.p-main{animation:none}#top .pimg{clip-path:none}}
+
 
 /* ---------- spacing system ---------- */
 main{padding-bottom:0}
@@ -623,7 +616,7 @@ main{padding-bottom:0}
 .wordmark.in .wm-rule i{animation:wrule 1.6s var(--ease) .5s forwards,wslide 2.6s linear infinite}
 @keyframes wrule{to{transform:scaleX(1)}}
 @keyframes wslide{to{background-position:72px 0}}
-@media(prefers-reduced-motion:reduce){.wl>span{transform:none;background-position:100% 0}.wordmark.in .wl>span,.wordmark.in .wm-rule i{animation:none}.wm-rule i{transform:none}.wl{transition:none}}
+
 .wm-rule{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
 @media(max-width:620px){.wm-rule{width:calc(100% - 28px)}}
 /* keep glyph overhang (negative tracking) inside the painted + clipped box */
@@ -678,4 +671,41 @@ html[lang=ar] .loader b,html[lang=ar] .loader small{font-family:var(--display)}
 .wm-marq span:nth-child(even){color:var(--wB)}
 @keyframes wmarq{to{transform:translateX(-50%)}}
 @media(max-width:620px){.wm-marq{width:calc(100% - 28px)}}
-@media(prefers-reduced-motion:reduce){.wl>span{transform:none}.wordmark.in .wl>span,.wm-marq>div{animation:none}}
+
+
+/* ===== v7.2 — desktop smoothness =====
+   The site used to switch every animation off when the OS asked for "reduced motion"
+   (common on Windows laptops), so only phones showed the effects. Motion is now always on,
+   and the heaviest GPU effects are lightened on desktop so scrolling stays at 60fps. */
+@media(hover:hover) and (pointer:fine){
+  .card,.stat,.tag,.eyebrow,.filter-btn,.search,.btn-secondary,.icon-btn,#top .pframe{-webkit-backdrop-filter:none;backdrop-filter:none}
+  .site-header,.nav-links,.toast,.chip{-webkit-backdrop-filter:blur(14px) saturate(150%);backdrop-filter:blur(14px) saturate(150%)}
+  .grain{will-change:transform;contain:strict}
+  .pwrap,#top .pframe,.pimg{backface-visibility:hidden;transform-style:flat}
+}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+.cur-dot,.cur-ring{display:none!important}
+/* ===== v7.3 — mobile fixes ===== */
+@media(max-width:950px){
+  /* the scroll blur belonged to the pinned desktop hero; on phones it blurred the links */
+  #top .hero-copy{filter:none!important}
+  #top .pwrap{width:min(240px,60%)}
+  #top .stage{padding-top:92px}
+  #top .hero-grid{gap:22px}
+  /* menu: dropdown sheet under the header, not nested inside it */
+  .site-header .nav-links{position:absolute;top:calc(100% + 10px);left:0;right:0;display:none;flex-direction:column;gap:4px;padding:10px;border-radius:22px;
+    background:color-mix(in srgb,var(--bg) 94%,transparent);-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid var(--line);box-shadow:0 24px 60px -12px rgba(0,0,0,.55)}
+  .site-header .nav-links.open{display:flex;animation:menuin .32s var(--ease) both}
+  .site-header .nav-links a{display:flex;align-items:center;padding:12px 16px;border-radius:14px;font-size:1rem;font-weight:600;color:var(--text);background:transparent}
+  .site-header .nav-links a+a{border-top:1px solid var(--line);border-radius:0}
+  .site-header .nav-links a:first-child{border-radius:14px 14px 0 0}.site-header .nav-links a:last-child{border-radius:0 0 14px 14px}
+  .site-header .nav-links a:active,.site-header .nav-links a.on{background:var(--glass-2)}
+}
+@keyframes menuin{from{opacity:0;transform:translateY(-8px) scale(.98)}to{opacity:1;transform:none}}
+
+/* ===== v7.4 — accessibility ===== */
+.skip-link{position:fixed;top:10px;inset-inline-start:10px;z-index:1000;padding:10px 16px;border-radius:12px;background:#c6ff3d;color:#000;font-weight:700;transform:translateY(-200%);transition:transform .25s}
+.skip-link:focus{transform:none}
+main:focus{outline:none}

@@ -1,6 +1,6 @@
 (()=>{
 const clamp=(v,a=0,b=1)=>Math.min(b,Math.max(a,v));
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce=false;
 
 /* ---- scroll-driven items: word reveal, hero pin, horizontal trip gallery ---- */
 const items=[];
@@ -72,7 +72,7 @@ const kick=()=>{
 };
 function relayout(){layoutGallery();place(active);kick();}
 addEventListener('scroll',kick,{passive:true});
-addEventListener('resize',relayout);
+let lw=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-lw)<2)return;lw=innerWidth;relayout();}); /* ignore mobile address-bar resizes: they made the gallery jump */
 addEventListener('load',relayout);
 document.fonts&&document.fonts.ready.then(relayout);
 layoutGallery();kick();

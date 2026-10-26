@@ -1,7 +1,7 @@
 /* v6 effects: loader, split text, hero lens, cursor, magnetic, marquee, parallax */
 (()=>{
 const root=document.documentElement,ar=root.lang==='ar';
-const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reduce=false;
 const fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
 const heroH1=$('#top h1');
@@ -62,17 +62,11 @@ if(pimg&&pf&&fine&&!reduce){
     pimg.classList.add('on');if(!raf)raf=requestAnimationFrame(step);
   });
   pf.addEventListener('pointerleave',()=>{tx=ty=0;pimg.classList.remove('on');if(!raf)raf=requestAnimationFrame(step);});
-  addEventListener('pointermove',e=>{pw.style.setProperty('--px',((e.clientX/innerWidth)-.5)*30);pw.style.setProperty('--py',((e.clientY/innerHeight)-.5)*30);},{passive:true});
+  let ppx=0,ppy=0,pq=0;addEventListener('pointermove',e=>{ppx=((e.clientX/innerWidth)-.5)*30;ppy=((e.clientY/innerHeight)-.5)*30;if(!pq)pq=requestAnimationFrame(()=>{pq=0;pw.style.setProperty('--px',ppx.toFixed(2));pw.style.setProperty('--py',ppy.toFixed(2));});},{passive:true});
 }
 
-/* custom cursor + magnetic controls */
+/* magnetic controls (custom cursor removed) */
 if(fine&&!reduce){
-  const dot=document.createElement('div'),ring=document.createElement('div');dot.className='cur-dot';ring.className='cur-ring';
-  document.body.append(dot,ring);
-  let mx=-100,my=-100,rx=-100,ry=-100;
-  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;dot.style.transform=`translate3d(${mx}px,${my}px,0)`;},{passive:true});
-  document.addEventListener('pointerover',e=>ring.classList.toggle('big',!!e.target.closest('a,button,input,select,textarea,.tool-card,.calc-btn')));
-  const loop=()=>{rx+=(mx-rx)*.18;ry+=(my-ry)*.18;ring.style.transform=`translate3d(${rx}px,${ry}px,0)`;requestAnimationFrame(loop);};loop();
   $$('.btn,.icon-btn,.social.icon-only,.brand').forEach(el=>{
     el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect();
       el.style.setProperty('--tx',((e.clientX-r.left-r.width/2)*.28).toFixed(1)+'px');
@@ -108,8 +102,10 @@ if(mt&&!reduce){mt.parentElement.style.direction='ltr';}
 const frame=()=>{
   const dy=scrollY-last;last=scrollY;vel+=(dy-vel)*.08;
   if(mt&&!reduce){const half=mt.scrollWidth/2;x-=(ar?-1:1)*(.7+vel*.45);if(x<=-half)x+=half;if(x>0)x-=half;mt.style.transform=`translate3d(${x}px,0,0) skewX(${Math.max(-8,Math.min(8,-vel*.35))}deg)`;}
-  if(!reduce)imgs.forEach(im=>{const r=im.parentElement.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
-    im.style.translate='0 '+(((r.top+r.height/2-innerHeight/2)/innerHeight)*-8).toFixed(2)+'%';});
+  if(!reduce&&(dy!==0||!frame.init)){frame.init=1;
+    const H=innerHeight,rs=imgs.map(im=>im.parentElement.getBoundingClientRect());
+    imgs.forEach((im,i)=>{const r=rs[i];if(r.bottom<0||r.top>H)return;
+      im.style.translate='0 '+(((r.top+r.height/2-H/2)/H)*-8).toFixed(2)+'%';});}
   requestAnimationFrame(frame);
 };
 requestAnimationFrame(frame);

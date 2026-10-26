@@ -31,3 +31,11 @@
 - Fonts: Bricolage Grotesque (display) + Manrope (body) + JetBrains Mono; Cairo for Arabic. Variables at the top of the v7.1 block in `global.css`.
 - Shorter hero introduction (EN/AR).
 - Footer wordmark: jumping letters that flip between solid white and lime outline, plus a scrolling marquee. Colours: `--wA`, `--wB`.
+
+## v7.2 – v7.4 changes
+- New hero portrait (`img/hero.webp`), favicon / `profile-hero.*`, share card `og.jpg` and PWA icons (`img/icon-192.png`, `icon-512.png`) built from the new photo; `site.webmanifest` added.
+- Animations no longer switch off when the OS asks for "reduced motion" (that was why they only ran on phones). Heavy desktop effects (backdrop blur on cards, parallax reads) were lightened.
+- Custom cursor circle removed.
+- Mobile: scroll-blur on the hero text removed, hero portrait smaller, new dropdown menu (closes on outside tap, scroll, Esc).
+- Robustness: `localStorage` is wrapped in try/catch (private mode no longer breaks the menu/theme); mobile address-bar resize no longer re-lays out the Trip gallery.
+- Added `404.html`, a "Skip to content" link, `theme-color` + manifest on every page.
