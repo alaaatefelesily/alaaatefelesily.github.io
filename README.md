@@ -39,3 +39,12 @@
 - Mobile: scroll-blur on the hero text removed, hero portrait smaller, new dropdown menu (closes on outside tap, scroll, Esc).
 - Robustness: `localStorage` is wrapped in try/catch (private mode no longer breaks the menu/theme); mobile address-bar resize no longer re-lays out the Trip gallery.
 - Added `404.html`, a "Skip to content" link, `theme-color` + manifest on every page.
+
+## v8 changes — SEO + scroll
+- Native browser scrollbar hidden everywhere; the site draws its own (draggable, lime, auto-hides) in `global.js` / `global.css`. The top progress bar is a single colour (`--hlbg`).
+- SEO on every page: title, description, keywords, robots (max-snippet / max-image-preview), canonical, hreflang, full Open Graph + Twitter cards (image size and alt), geo, icons (`favicon.ico`, 192/512 PNG), `rel="me"` for every profile, JSON-LD graph (Person, WebSite, WebPage / ProfilePage / CollectionPage, BreadcrumbList, ItemList, ImageObject, FAQPage, WebApplication).
+- New crawlable pages: `tools/calculator.html`, `translator.html`, `timer.html`, `color-picker.html`, `tasbeeh.html` (each opens its tool automatically; `tools.html?tool=timer` also works).
+- `links.html`: 16 profiles (added Codeforces + Linktree), real count instead of "35+", empty filters removed, `aria-label` / `rel="me"` on every card, plain-text directory + FAQ.
+- `sitemap.xml`: every page, hreflang alternates and every image on the site (`image:image`). `robots.txt`, `llms.txt`, richer `site.webmanifest`.
+- Footer on every page links to all pages and tools (internal linking).
+- After deploy: submit `https://alaaatefelesily.github.io/sitemap.xml` in Google Search Console and Bing Webmaster Tools, then request indexing for the new `tools/*.html` pages.

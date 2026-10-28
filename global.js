@@ -185,3 +185,26 @@ document.querySelectorAll('.progress').forEach(p=>observer.observe(p));
   });
   if(location.hash) addEventListener('load',()=>setTimeout(()=>goTo(location.hash,true),60),{once:true});
 })();
+
+/* ===== v8: custom site scrollbar (native scrollbar is hidden in CSS) ===== */
+(()=>{
+  const track=document.createElement('div');track.className='cscroll';track.setAttribute('aria-hidden','true');
+  const thumb=document.createElement('div');thumb.className='cscroll-thumb';track.appendChild(thumb);document.body.appendChild(track);
+  const de=document.documentElement;let hideT=0,drag=null,raf=0;
+  const max=()=>Math.max(0,de.scrollHeight-innerHeight);
+  const jump=y=>{y=Math.max(0,Math.min(max(),y));if(window.lenis)window.lenis.scrollTo(y,{immediate:true,force:true});else scrollTo(0,y);};
+  const draw=()=>{raf=0;const m=max(),h=innerHeight;if(m<8){track.style.display='none';return;}track.style.display='';
+    const th=Math.max(44,Math.round(h*h/de.scrollHeight)),room=h-th;
+    thumb.style.height=th+'px';thumb.style.transform='translate3d(0,'+(room*(scrollY/m)).toFixed(1)+'px,0)';};
+  const req=()=>{if(!raf)raf=requestAnimationFrame(draw);};
+  const wake=()=>{track.classList.add('on');clearTimeout(hideT);hideT=setTimeout(()=>{if(!drag)track.classList.remove('on');},1100);};
+  addEventListener('scroll',()=>{req();wake();},{passive:true});addEventListener('resize',req);
+  if(window.ResizeObserver)new ResizeObserver(req).observe(document.body);
+  addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&e.clientX>innerWidth-40||e.pointerType==='mouse'&&e.clientX<40&&de.dir==='rtl')wake();},{passive:true});
+  thumb.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();drag={y:e.clientY,s:scrollY};track.classList.add('drag');de.classList.add('cs-drag');thumb.setPointerCapture(e.pointerId);});
+  thumb.addEventListener('pointermove',e=>{if(!drag)return;const th=thumb.offsetHeight,room=innerHeight-th;if(room>0)jump(drag.s+(e.clientY-drag.y)*(max()/room));});
+  const end=()=>{if(!drag)return;drag=null;track.classList.remove('drag');de.classList.remove('cs-drag');wake();};
+  thumb.addEventListener('pointerup',end);thumb.addEventListener('pointercancel',end);
+  track.addEventListener('pointerdown',e=>{if(e.target!==track)return;const th=thumb.offsetHeight,room=innerHeight-th;if(room>0)jump(((e.clientY-th/2)/room)*max());});
+  draw();setTimeout(req,600);addEventListener('load',req);
+})();

@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+User-agent: Googlebot-Image
+Allow: /
+
 Sitemap: https://alaaatefelesily.github.io/sitemap.xml

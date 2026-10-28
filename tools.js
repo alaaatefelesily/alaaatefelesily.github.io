@@ -1212,6 +1212,10 @@ function initializeCalculator() {
         // تحديث الأدوات السريعة
         updateQuickTools();
 
+        // فتح أداة مباشرة من رابطها (صفحات الأدوات المستقلة أو ?tool=)
+        const auto = (document.body.dataset.autotool || new URLSearchParams(location.search).get('tool') || '').toLowerCase();
+        if (auto && document.getElementById(auto + 'Tool')) setTimeout(() => selectTool(auto), 450);
+
         // تهيئة Lucide icons
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();

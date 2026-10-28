@@ -709,3 +709,26 @@ html.lenis,html.lenis body{height:auto}
 .skip-link{position:fixed;top:10px;inset-inline-start:10px;z-index:1000;padding:10px 16px;border-radius:12px;background:#c6ff3d;color:#000;font-weight:700;transform:translateY(-200%);transition:transform .25s}
 .skip-link:focus{transform:none}
 main:focus{outline:none}
+
+/* ===== v8: site-owned scrollbar (native one hidden) + single-colour progress bar ===== */
+html,body,*{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar,body::-webkit-scrollbar,*::-webkit-scrollbar{width:0!important;height:0!important;display:none!important}
+.scroll-bar{background:var(--hlbg)!important;height:3px}
+.cscroll{position:fixed;top:0;bottom:0;inset-inline-end:0;width:16px;z-index:129;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.cscroll.on,.cscroll.drag{opacity:1;pointer-events:auto}
+.cscroll-thumb{position:absolute;inset-inline-end:3px;top:0;width:6px;min-height:44px;border-radius:99px;background:var(--hlbg);box-shadow:0 0 0 1px rgba(0,0,0,.25);transform:translate3d(0,0,0);transition:width .25s var(--ease),inset-inline-end .25s var(--ease);touch-action:none;cursor:grab}
+.cscroll:hover .cscroll-thumb,.cscroll.drag .cscroll-thumb{width:10px;inset-inline-end:2px}
+.cscroll.drag .cscroll-thumb{cursor:grabbing}
+html.cs-drag,html.cs-drag *{user-select:none!important}
+@media(max-width:700px){.cscroll{width:12px}.cscroll-thumb{width:4px;min-height:36px}}
+
+/* ===== v8: SEO content blocks ===== */
+.seo-prose h2{margin-bottom:10px}.seo-prose p{color:var(--muted);max-width:75ch}.seo-prose ul,.seo-prose ol{margin:10px 0 0;padding-inline-start:1.3em;color:var(--muted);display:grid;gap:6px}
+.seo-prose a{color:var(--text);text-decoration:underline;text-decoration-color:var(--hlbg);text-decoration-thickness:2px;text-underline-offset:3px}
+.link-dir{columns:2;column-gap:36px}.link-dir li{break-inside:avoid;margin-bottom:8px}@media(max-width:700px){.link-dir{columns:1}}
+.faq{display:grid;gap:10px;margin-top:14px}.faq details{padding:16px 20px}.faq summary{cursor:pointer;font-weight:650;list-style:none}.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";float:inline-end;color:var(--hl)}.faq details[open] summary::after{content:"\2013"}.faq p{margin-top:10px}
+/* footer: 4 columns (brand, navigation, tools, connect) */
+@media(min-width:901px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr 1fr}}
+@media(min-width:561px) and (max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
