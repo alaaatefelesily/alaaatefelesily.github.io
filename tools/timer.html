@@ -48,7 +48,7 @@
 
 
 <script>try{document.documentElement.dataset.theme=localStorage.getItem("theme")||"dark"}catch(e){}</script>
-<link rel="stylesheet" href="../global.css"><meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="../global.css?v=9"><meta name="color-scheme" content="dark light">
 <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js" defer></script>
 <script>document.documentElement.classList.add("js");setTimeout(function(){document.documentElement.classList.add("ready")},3800)</script><link rel="preconnect" href="https://unpkg.com" crossorigin></head>
 <body data-autotool="timer"><a class="skip-link" href="#main">Skip to content</a>
@@ -63,7 +63,7 @@
           <a class="" href="../links.html">Links</a>
           <a class="active" href="../tools.html">Tools</a>
         </div>
-        <div class="nav-actions"><button class="icon-btn" id="themeToggle" aria-label="Toggle theme"><i data-lucide="moon"></i></button>
+        <div class="nav-actions"><button class="theme-switch" data-theme-toggle type="button" role="switch" aria-checked="true" aria-label="Dark mode"><span class="ts-track" aria-hidden="true"><svg class="ts-ico ts-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ts-ico ts-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><span class="ts-thumb"><svg class="ts-ico ts-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg><svg class="ts-ico ts-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span></span></button>
           <button class="icon-btn menu-btn" id="menuToggle" aria-label="Open menu"><i data-lucide="menu"></i></button>
         </div>
       </nav>
@@ -360,6 +360,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script src="../lenis.min.js"></script>
-<script src="../global.js"></script><script src="../fx.js"></script>
+<script src="../global.js?v=9"></script><script src="../fx.js?v=9"></script>
 <script src="../tools.js"></script>
 </body></html>

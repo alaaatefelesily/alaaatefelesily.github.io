@@ -2,147 +2,114 @@ const root = document.documentElement;
 const themeButton = document.querySelector('[data-theme-toggle]');
 const menuButton = document.querySelector('[data-menu]');
 const navLinks = document.querySelector('.nav-links');
+const isAr = root.lang === 'ar';
 
+/* one shared animation-frame loop: every scroll-linked effect runs inside the same frame as the smooth scroller,
+   so nothing lags behind the page and nothing runs twice */
+const frameHooks = window.frameHooks = [];
+
+/* ===== theme ===== */
 let savedTheme=null;try{savedTheme=localStorage.getItem('theme');}catch(e){}
 root.dataset.theme = savedTheme || 'dark';
-
-function updateThemeIcon(){
-  if(!themeButton) return;
-  themeButton.innerHTML = root.dataset.theme === 'dark'
-    ? '<i data-lucide="sun"></i>' : '<i data-lucide="moon"></i>';
-  if(window.lucide) lucide.createIcons();
+const metaTheme=document.querySelector('meta[name="theme-color"]');
+function syncThemeUI(){
+  const dark = root.dataset.theme === 'dark';
+  if(themeButton){
+    themeButton.setAttribute('aria-checked', dark ? 'true' : 'false');
+    themeButton.setAttribute('aria-label', isAr ? (dark ? 'الوضع الليلي: مفعّل' : 'الوضع الليلي: متوقف') : (dark ? 'Dark mode: on' : 'Dark mode: off'));
+  }
+  if(metaTheme) metaTheme.setAttribute('content', dark ? '#000000' : '#f4f4f2');
 }
-updateThemeIcon();
+syncThemeUI();
 
 themeButton?.addEventListener('click',()=>{
-  const apply=()=>{root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-    try{localStorage.setItem('theme',root.dataset.theme);}catch(e){}updateThemeIcon();};
-  if(!document.startViewTransition||false){apply();return;}
+  const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  const apply=()=>{
+    root.dataset.theme = next;
+    try{localStorage.setItem('theme',next);}catch(e){}
+    syncThemeUI();
+  };
+  root.classList.add('no-tr');               /* no element animates while colours swap */
+  const done=()=>requestAnimationFrame(()=>requestAnimationFrame(()=>root.classList.remove('no-tr')));
+  if(!document.startViewTransition){apply();done();return;}
   const r=themeButton.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,
     end=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
   root.classList.add('tt');
   const t=document.startViewTransition(apply);
   t.ready.then(()=>root.animate({clipPath:[`circle(0px at ${x}px ${y}px)`,`circle(${end}px at ${x}px ${y}px)`]},
-    {duration:1000,easing:'cubic-bezier(.16,1,.3,1)',pseudoElement:'::view-transition-new(root)'}));
-  t.finished.finally(()=>root.classList.remove('tt'));
+    {duration:700,easing:'cubic-bezier(.16,1,.3,1)',pseudoElement:'::view-transition-new(root)'})).catch(()=>{});
+  t.finished.finally(()=>{root.classList.remove('tt');done();});
 });
 
+/* ===== menu ===== */
+const closeMenu=()=>{navLinks?.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');};
 menuButton?.addEventListener('click',()=>{
   const o=navLinks?.classList.toggle('open');
   menuButton.setAttribute('aria-expanded',o?'true':'false');
 });
 document.addEventListener('click',e=>{
-  if(navLinks?.classList.contains('open')&&!e.target.closest('.site-header')){navLinks.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');}
+  if(navLinks?.classList.contains('open')&&!e.target.closest('.site-header')) closeMenu();
 });
-addEventListener('keydown',e=>{if(e.key==='Escape'&&navLinks?.classList.contains('open')){navLinks.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');menuButton?.focus();}});
-addEventListener('scroll',()=>{if(navLinks?.classList.contains('open')){navLinks.classList.remove('open');menuButton?.setAttribute('aria-expanded','false');}},{passive:true});
+addEventListener('keydown',e=>{if(e.key==='Escape'&&navLinks?.classList.contains('open')){closeMenu();menuButton?.focus();}});
+addEventListener('scroll',()=>{if(navLinks?.classList.contains('open')) closeMenu();},{passive:true});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks?.classList.remove('open')));
 
-document.querySelectorAll('.nav-links a').forEach(a=>{
-  a.addEventListener('click',()=>navLinks?.classList.remove('open'));
-});
-
+/* ===== reveal on scroll (opacity + transform only) ===== */
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
-    if(entry.isIntersecting) entry.target.classList.add('visible');
+    if(!entry.isIntersecting) return;
+    const el=entry.target;
+    el.classList.add('visible');
+    observer.unobserve(el);
+    /* once revealed, drop the stagger delay so hover effects respond instantly */
+    if(el.classList.contains('reveal')) setTimeout(()=>el.style.setProperty('--d','0s'),2200);
   });
-},{threshold:.10});
+},{threshold:.08,rootMargin:'0px 0px -4% 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('.progress').forEach(p=>observer.observe(p));
 
+/* ===== toast / copy ===== */
 function toast(message){
   let el=document.querySelector('.toast');
   if(!el){ el=document.createElement('div'); el.className='toast'; document.body.appendChild(el); }
   el.textContent=message; el.classList.add('show');
-  setTimeout(()=>el.classList.remove('show'),2200);
+  clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('show'),2200);
 }
 window.toast=toast;
-
 document.querySelectorAll('[data-copy]').forEach(btn=>{
   btn.addEventListener('click',async()=>{
     try{
       await navigator.clipboard.writeText(btn.dataset.copy);
-      toast('Copied successfully');
-    }catch(e){ toast('Copy failed'); }
+      toast(isAr?'تم النسخ بنجاح':'Copied successfully');
+    }catch(e){ toast(isAr?'تعذّر النسخ':'Copy failed'); }
   });
 });
 
-/* Premium glass interaction: cards follow the cursor with a soft highlight. */
+/* ===== glass highlight that follows the cursor (throttled to one write per frame) ===== */
 document.querySelectorAll('.card').forEach(card=>{
+  let raf=0,ex=0,ey=0;
   card.addEventListener('pointermove',e=>{
     if(e.pointerType==='touch') return;
-    const r=card.getBoundingClientRect();
-    card.style.setProperty('--mx',`${e.clientX-r.left}px`);
-    card.style.setProperty('--my',`${e.clientY-r.top}px`);
-  });
+    ex=e.clientX;ey=e.clientY;
+    if(raf) return;
+    raf=requestAnimationFrame(()=>{raf=0;const r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',`${ex-r.left}px`);card.style.setProperty('--my',`${ey-r.top}px`);});
+  },{passive:true});
 });
 
-/* Subtle 3D tilt for the portrait. */
+/* ===== subtle 3D tilt ===== */
 document.querySelectorAll('[data-tilt]').forEach(el=>{
   el.addEventListener('pointermove',e=>{
-    if(e.pointerType==='touch'||false) return;
+    if(e.pointerType==='touch') return;
     const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
     el.style.transform=`perspective(1000px) rotateY(${x*7}deg) rotateX(${-y*6}deg)`;
-  });
+  },{passive:true});
   el.addEventListener('pointerleave',()=>el.style.transform='');
 });
 
-/* Lightweight ambient particles — no library required. */
-const canvas=document.getElementById('ambient-canvas');
-if(canvas){
-  const ctx=canvas.getContext('2d');
-  const isMobile=matchMedia('(max-width:760px)').matches;
-  const reduceMotion=false;
-  let w=innerWidth,h=innerHeight,dpr=Math.min(devicePixelRatio||1,2), particles=[];
-  let lastWidth=innerWidth, running=!document.hidden;
-
-  function resize(){
-    w=innerWidth; h=innerHeight; canvas.width=w*dpr; canvas.height=h*dpr;
-    canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0);
-    const density=isMobile?26000:18000, cap=isMobile?35:90;
-    const count=Math.min(cap,Math.floor(w*h/density));
-    particles=Array.from({length:count},()=>({
-      x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.7+.3,
-      vx:(Math.random()-.5)*.18,vy:(Math.random()-.5)*.18,a:Math.random()*.45+.08
-    }));
-  }
-
-  function frame(){
-    if(running){
-      ctx.clearRect(0,0,w,h);
-      const dark=root.dataset.theme==='dark';
-      for(const p of particles){
-        p.x+=p.vx;p.y+=p.vy;
-        if(p.x<0)p.x=w;if(p.x>w)p.x=0;if(p.y<0)p.y=h;if(p.y>h)p.y=0;
-        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fillStyle=dark?`rgba(255,255,255,${p.a})`:`rgba(10,10,12,${p.a*.5})`;
-        ctx.fill();
-      }
-    }
-    requestAnimationFrame(frame);
-  }
-
-  function debounce(fn,wait){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),wait);};}
-
-  // On mobile, scrolling hides/shows the browser's address bar, which fires a
-  // 'resize' event even though the page WIDTH never changed. Rebuilding the
-  // canvas on every one of those events is exactly what caused the repeated
-  // flicker — so we only react when the width actually changes.
-  function handleResize(){
-    if(Math.abs(innerWidth-lastWidth)<2) return;
-    lastWidth=innerWidth;
-    resize();
-  }
-
-  document.addEventListener('visibilitychange',()=>{running=!document.hidden;});
-  addEventListener('resize',debounce(handleResize,150),{passive:true});
-
-  resize();
-  if(!reduceMotion) frame(); else ctx.clearRect(0,0,w,h);
-}
 if(window.lucide) lucide.createIcons();
-/* header shadow on scroll */
-const hdr=document.querySelector('.site-header');
-if(hdr){const f=()=>hdr.classList.toggle('scrolled',scrollY>8);f();addEventListener('scroll',f,{passive:true});}
-/* contact form -> opens the visitor's email app with the message prefilled */
+
+/* ===== contact form -> opens the visitor's email app with the message prefilled ===== */
 const cf=document.getElementById('contactForm');
 cf?.addEventListener('submit',e=>{
   e.preventDefault();
@@ -150,29 +117,50 @@ cf?.addEventListener('submit',e=>{
   location.href=`mailto:${cf.dataset.mailto}?subject=${encodeURIComponent('Portfolio inquiry from '+d.get('name'))}&body=${encodeURIComponent(body)}`;
   toast(cf.dataset.toast||'Opening your email app…');
 });
-/* skill bars fill when visible */
-document.querySelectorAll('.progress').forEach(p=>observer.observe(p));
 
-
-/* ===== Smooth, inertial scrolling + smooth anchor navigation (Lenis) ===== */
+/* ===== Smooth scrolling (Lenis, lerp mode) + smooth anchor navigation + shared frame loop ===== */
 (()=>{
-  const reduce=false;
   const bar=document.createElement('div');bar.className='scroll-bar';bar.setAttribute('aria-hidden','true');document.body.appendChild(bar);
-  const setBar=()=>{const m=root.scrollHeight-innerHeight;root.style.setProperty('--sp',m>0?Math.min(1,Math.max(0,scrollY/m)).toFixed(4):0);};
-  addEventListener('scroll',setBar,{passive:true});addEventListener('resize',setBar);setBar();
   document.querySelectorAll('textarea,.calc-display').forEach(el=>el.setAttribute('data-lenis-prevent',''));
+
   let lenis=null;
-  if(window.Lenis&&!reduce){
-    lenis=new Lenis({duration:1.15,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),smoothWheel:true});
+  if(window.Lenis){
+    /* lerp mode = the scroll position glides toward the target every frame (feels like iOS inertia).
+       Touch devices keep their native momentum scrolling, which is already the smoothest possible there. */
+    lenis=new Lenis({lerp:.09,smoothWheel:true,wheelMultiplier:.95,syncTouch:false});
     window.lenis=lenis;
-    const loop=t=>{lenis.raf(t);requestAnimationFrame(loop);};requestAnimationFrame(loop);
   }
+  const loop=t=>{
+    if(lenis) lenis.raf(t);
+    const y=scrollY;
+    for(let i=0;i<frameHooks.length;i++) frameHooks[i](y,t);
+    requestAnimationFrame(loop);
+  };
+  requestAnimationFrame(loop);
+
+  /* page height is measured only when the layout changes, never inside the scroll loop */
+  let docMax=0;
+  const measureDoc=()=>{docMax=Math.max(0,root.scrollHeight-innerHeight);};
+  if(window.ResizeObserver) new ResizeObserver(measureDoc).observe(document.body);
+  addEventListener('resize',measureDoc);addEventListener('load',measureDoc);measureDoc();
+  window.docMax=()=>docMax;
+
+  /* progress bar + header shadow */
+  const hdr=document.querySelector('.site-header');
+  let lastBar=-1,scrolled=false;
+  frameHooks.push(y=>{
+    if(y===lastBar) return;lastBar=y;
+    bar.style.setProperty('--sp',docMax>0?Math.min(1,Math.max(0,y/docMax)).toFixed(4):0);
+    const s=y>8;if(hdr&&s!==scrolled){scrolled=s;hdr.classList.toggle('scrolled',s);}
+  });
+
+  const ease=t=>1-Math.pow(1-t,4);
   const norm=p=>p.replace(/index\.html$/,'');
   const goTo=(hash,instant)=>{
     const id=decodeURIComponent(hash.slice(1));
     const el=id&&id!=='top'?document.getElementById(id):null;
     if(id&&id!=='top'&&!el)return false;
-    if(lenis){ if(el) lenis.scrollTo(el,{offset:-12,duration:instant?0:1.6,immediate:!!instant,easing:t=>1-Math.pow(1-t,4)}); else lenis.scrollTo(0,{duration:instant?0:1.6,immediate:!!instant,easing:t=>1-Math.pow(1-t,4)}); }
+    if(lenis){ lenis.scrollTo(el||0,{offset:el?-12:0,duration:instant?0:1.6,immediate:!!instant,easing:ease}); }
     else{ if(el) el.scrollIntoView({behavior:instant?'auto':'smooth',block:'start'}); else scrollTo({top:0,behavior:instant?'auto':'smooth'}); }
     return true;
   };
@@ -186,25 +174,30 @@ document.querySelectorAll('.progress').forEach(p=>observer.observe(p));
   if(location.hash) addEventListener('load',()=>setTimeout(()=>goTo(location.hash,true),60),{once:true});
 })();
 
-/* ===== v8: custom site scrollbar (native scrollbar is hidden in CSS) ===== */
+/* ===== custom site scrollbar (native scrollbar is hidden in CSS) ===== */
 (()=>{
   const track=document.createElement('div');track.className='cscroll';track.setAttribute('aria-hidden','true');
   const thumb=document.createElement('div');thumb.className='cscroll-thumb';track.appendChild(thumb);document.body.appendChild(track);
-  const de=document.documentElement;let hideT=0,drag=null,raf=0;
-  const max=()=>Math.max(0,de.scrollHeight-innerHeight);
+  const de=root;let drag=null,lastY=-1,lastWake=0,shown=false,thumbH=0,vh=innerHeight,visible=true;
+  const max=()=>window.docMax?window.docMax():Math.max(0,de.scrollHeight-innerHeight);
   const jump=y=>{y=Math.max(0,Math.min(max(),y));if(window.lenis)window.lenis.scrollTo(y,{immediate:true,force:true});else scrollTo(0,y);};
-  const draw=()=>{raf=0;const m=max(),h=innerHeight;if(m<8){track.style.display='none';return;}track.style.display='';
-    const th=Math.max(44,Math.round(h*h/de.scrollHeight)),room=h-th;
-    thumb.style.height=th+'px';thumb.style.transform='translate3d(0,'+(room*(scrollY/m)).toFixed(1)+'px,0)';};
-  const req=()=>{if(!raf)raf=requestAnimationFrame(draw);};
-  const wake=()=>{track.classList.add('on');clearTimeout(hideT);hideT=setTimeout(()=>{if(!drag)track.classList.remove('on');},1100);};
-  addEventListener('scroll',()=>{req();wake();},{passive:true});addEventListener('resize',req);
-  if(window.ResizeObserver)new ResizeObserver(req).observe(document.body);
-  addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&e.clientX>innerWidth-40||e.pointerType==='mouse'&&e.clientX<40&&de.dir==='rtl')wake();},{passive:true});
+  const layout=()=>{
+    vh=innerHeight;const m=max();
+    visible=m>=8;track.style.display=visible?'':'none';
+    thumbH=Math.max(44,Math.round(vh*vh/de.scrollHeight));thumb.style.height=thumbH+'px';lastY=-1;
+  };
+  const wake=t=>{lastWake=t||performance.now();if(!shown){shown=true;track.classList.add('on');}};
+  frameHooks.push((y,t)=>{
+    if(y!==lastY){lastY=y;wake(t);
+      if(visible){const m=max();thumb.style.transform='translate3d(0,'+((vh-thumbH)*(m?y/m:0)).toFixed(1)+'px,0)';}}
+    if(shown&&!drag&&t-lastWake>1100){shown=false;track.classList.remove('on');}
+  });
+  if(window.ResizeObserver)new ResizeObserver(layout).observe(document.body);
+  addEventListener('resize',layout);addEventListener('load',layout);layout();
+  addEventListener('pointermove',e=>{if(e.pointerType==='mouse'&&(e.clientX>innerWidth-40||(e.clientX<40&&de.dir==='rtl')))wake();},{passive:true});
   thumb.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();drag={y:e.clientY,s:scrollY};track.classList.add('drag');de.classList.add('cs-drag');thumb.setPointerCapture(e.pointerId);});
-  thumb.addEventListener('pointermove',e=>{if(!drag)return;const th=thumb.offsetHeight,room=innerHeight-th;if(room>0)jump(drag.s+(e.clientY-drag.y)*(max()/room));});
+  thumb.addEventListener('pointermove',e=>{if(!drag)return;const room=vh-thumbH;if(room>0)jump(drag.s+(e.clientY-drag.y)*(max()/room));});
   const end=()=>{if(!drag)return;drag=null;track.classList.remove('drag');de.classList.remove('cs-drag');wake();};
   thumb.addEventListener('pointerup',end);thumb.addEventListener('pointercancel',end);
-  track.addEventListener('pointerdown',e=>{if(e.target!==track)return;const th=thumb.offsetHeight,room=innerHeight-th;if(room>0)jump(((e.clientY-th/2)/room)*max());});
-  draw();setTimeout(req,600);addEventListener('load',req);
+  track.addEventListener('pointerdown',e=>{if(e.target!==track)return;const room=vh-thumbH;if(room>0)jump(((e.clientY-thumbH/2)/room)*max());});
 })();

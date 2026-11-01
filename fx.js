@@ -15,7 +15,7 @@ if(heroH1&&!seen&&!reduce){
   L.innerHTML='<b><em>'+ch('dev',0)+'</em><u>'+ch('.alaa',3)+'</u></b><small>Software Engineer</small><i></i>';
   document.body.appendChild(L);
   try{sessionStorage.setItem('ld','1');}catch(e){}
-  setTimeout(()=>{L.classList.add('out');setTimeout(ready,350);setTimeout(()=>L.remove(),1500);},1350);
+  setTimeout(()=>{L.classList.add('out');setTimeout(ready,220);setTimeout(()=>L.remove(),1200);},1000);
 }else ready();
 
 /* split text: letters (EN) / words (AR) */
@@ -81,9 +81,10 @@ if(fb&&!$('.wordmark')){
   const wm=document.createElement('div');wm.className='wordmark';wm.setAttribute('role','img');wm.setAttribute('aria-label','dev.alaa');
   const items=['dev.alaa','Software Engineer','UI/UX','Web','AI','Problem solving'];
   const track=[...items,...items].map(t=>`<span>${t}</span><span>✦</span>`).join('');
-  wm.innerHTML='<span class="wm-in" aria-hidden="true">'+[...'dev.alaa'].map((c,i)=>`<span class="wl" style="--k:${i}"><span>${c}</span></span>`).join('')+'</span><div class="wm-marq" aria-hidden="true"><div>'+track+track+'</div></div>';
+  wm.innerHTML='<span class="wm-in" aria-hidden="true">'+[...'dev.alaa'].map((c,i)=>`<span class="wl" style="--k:${i}"><span data-c="${c}">${c}</span></span>`).join('')+'</span><div class="wm-marq" aria-hidden="true"><div>'+track+track+'</div></div>';
   fb.parentElement.insertBefore(wm,fb);
   const go=()=>wm.classList.add('in');
+  if('IntersectionObserver' in window)new IntersectionObserver(es=>es.forEach(e=>wm.classList.toggle('vis',e.isIntersecting)),{rootMargin:'120px'}).observe(wm);else wm.classList.add('vis');
   if(reduce||!('IntersectionObserver' in window))go();
   else{new IntersectionObserver((es,o)=>es.forEach(e=>{if(e.isIntersecting){go();o.disconnect();}}),{threshold:.05}).observe(wm);setTimeout(()=>{if(wm.getBoundingClientRect().top<innerHeight)go();},2500);}
   if(fine&&!reduce){
@@ -92,21 +93,23 @@ if(fb&&!$('.wordmark')){
     wm.addEventListener('pointerleave',()=>$$('.wl',wm).forEach(l=>l.style.setProperty('--lift',0)));
   }
 }
-/* film grain */
-if(!reduce){const g=document.createElement('div');g.className='grain';g.setAttribute('aria-hidden','true');document.body.appendChild(g);}
 
-/* scroll-velocity marquee + image parallax */
+/* scroll-velocity marquee + image parallax (runs in the shared frame, only for what is on screen) */
 const mt=$('.mtrack'),imgs=$$('.about-photo img,.jcard img');
-let x=0,vel=0,last=scrollY;
-if(mt&&!reduce){mt.parentElement.style.direction='ltr';}
-const frame=()=>{
-  const dy=scrollY-last;last=scrollY;vel+=(dy-vel)*.08;
-  if(mt&&!reduce){const half=mt.scrollWidth/2;x-=(ar?-1:1)*(.7+vel*.45);if(x<=-half)x+=half;if(x>0)x-=half;mt.style.transform=`translate3d(${x}px,0,0) skewX(${Math.max(-8,Math.min(8,-vel*.35))}deg)`;}
-  if(!reduce&&(dy!==0||!frame.init)){frame.init=1;
+let x=0,vel=0,last=scrollY,mtOn=true,half=0;
+if(mt){mt.parentElement.style.direction='ltr';
+  const mo=new IntersectionObserver(es=>es.forEach(e=>mtOn=e.isIntersecting),{rootMargin:'80px'});mo.observe(mt.parentElement);
+  const hm=()=>half=mt.scrollWidth/2;hm();addEventListener('resize',hm);addEventListener('load',hm);document.fonts&&document.fonts.ready.then(hm);}
+let pInit=false;
+const frame=(y)=>{
+  const dy=y-last;last=y;vel+=(dy-vel)*.08;
+  if(mt&&mtOn&&half){x-=(ar?-1:1)*(.7+vel*.45);if(x<=-half)x+=half;if(x>0)x-=half;
+    mt.style.transform=`translate3d(${x.toFixed(2)}px,0,0) skewX(${Math.max(-8,Math.min(8,-vel*.35)).toFixed(2)}deg)`;}
+  if(dy!==0||!pInit){pInit=true;
     const H=innerHeight,rs=imgs.map(im=>im.parentElement.getBoundingClientRect());
     imgs.forEach((im,i)=>{const r=rs[i];if(r.bottom<0||r.top>H)return;
       im.style.translate='0 '+(((r.top+r.height/2-H/2)/H)*-8).toFixed(2)+'%';});}
-  requestAnimationFrame(frame);
 };
-requestAnimationFrame(frame);
+if(window.frameHooks)window.frameHooks.push(frame);
+else{const loop=()=>{frame(scrollY);requestAnimationFrame(loop);};requestAnimationFrame(loop);}
 })();

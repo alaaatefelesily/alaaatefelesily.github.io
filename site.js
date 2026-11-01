@@ -23,8 +23,10 @@ const measure=it=>{
   it.tgt=it.kind==='pin'?clamp(-r.top/Math.max(1,r.height-h)):clamp((h*.88-r.top)/(h*.5+r.height*.9));
 };
 const paint=it=>{
-  if(it.kind==='pin') it.el.style.setProperty('--p',it.cur.toFixed(4));
-  else{const n=it.spans.length;it.spans.forEach((s,i)=>s.style.opacity=(.16+.84*clamp(it.cur*(n+3)-i)).toFixed(3));}
+  const v=it.cur.toFixed(4);
+  if(it.last===v)return;it.last=v;
+  if(it.kind==='pin') it.el.style.setProperty('--p',v);
+  else{const n=it.spans.length;for(let i=0;i<n;i++)it.spans[i].style.opacity=(.16+.84*clamp(it.cur*(n+3)-i)).toFixed(3);}
 };
 let raf=0;
 function tick(){
@@ -34,7 +36,7 @@ function tick(){
     if(window.lenis||reduce||Math.abs(d)<.0004){it.cur=it.tgt;}else{it.cur+=d*.16;busy=true;}
     paint(it);
   }
-  raf=busy?requestAnimationFrame(tick):0;
+  raf=(busy&&!window.frameHooks)?requestAnimationFrame(tick):0;
 }
 
 /* ---- nav: sliding glass pill + scroll-spy ---- */
@@ -68,10 +70,11 @@ const par=[];
 const doPar=()=>{if(reduce)return;par.forEach(im=>{const r=im.parentElement.getBoundingClientRect();const c=(r.top+r.height/2-innerHeight/2)/innerHeight;im.style.transform=`translate3d(0,${(c*-7).toFixed(2)}%,0) scale(1.14)`;});};
 const kick=()=>{
   items.forEach(measure);spy();doPar();
-  if(!raf)raf=requestAnimationFrame(tick);
+  if(window.lenis||window.frameHooks){tick();}else if(!raf)raf=requestAnimationFrame(tick);
 };
 function relayout(){layoutGallery();place(active);kick();}
-addEventListener('scroll',kick,{passive:true});
+if(window.frameHooks){let ly=-1;window.frameHooks.push(y=>{if(y!==ly){ly=y;kick();}});}
+else addEventListener('scroll',kick,{passive:true});
 let lw=innerWidth;addEventListener('resize',()=>{if(Math.abs(innerWidth-lw)<2)return;lw=innerWidth;relayout();}); /* ignore mobile address-bar resizes: they made the gallery jump */
 addEventListener('load',relayout);
 document.fonts&&document.fonts.ready.then(relayout);
