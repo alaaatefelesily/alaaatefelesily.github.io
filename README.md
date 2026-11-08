@@ -1,5 +1,30 @@
 # Alaa Atef Elesily — Portfolio (EN / AR)
 
+## Folder map (v11)
+```
+/
+├─ index.html            Home (English)
+├─ ar/index.html         Home (Arabic, RTL)
+├─ links.html            Links page (19 official profiles, location, FAQ)
+├─ tools.html            Tools hub
+├─ tools/                Calculator, Translator, Timer, Color Picker, Tasbeeh
+├─ 404.html              Not-found page
+├─ about.html, contact.html   Redirect stubs to the home sections (keep: old URLs)
+├─ assets/
+│  ├─ css/               global.css (whole site) · links.css (links page only)
+│  ├─ js/                global.js · fx.js · site.js · tools.js · links.js · lenis.min.js · lucide.min.js
+│  ├─ fonts/             self-hosted .woff2 fonts
+│  └─ img/               photos, og.jpg (share card), icon-192/512, profile-hero.*
+├─ robots.txt · sitemap.xml · llms.txt · site.webmanifest · favicon.ico   (must stay in the root)
+└─ blog-*.png / blog-*.jpg   images used by the Blogger blog (kept in the root so the blog's URLs keep working)
+```
+Page URLs did not change, so nothing indexed by Google breaks.
+
+## Links page (v11)
+- All icons are inline SVG (brand icons from Simple Icons, CC0) — no CDN, nothing to fail to load.
+- Add a platform: copy one `<li>…</li>` card in `links.html`, change href / icon / text, and add the URL to `sameAs` + `ItemList` in the JSON-LD at the top of the page.
+- `lucide.min.js` is now vendored in `assets/js/` (was loaded from unpkg).
+
 - `index.html` English, `ar/index.html` Arabic (RTL), linked with hreflang.
 - `links.html`, `tools.html` shared pages. `about.html` / `contact.html` redirect to the home sections.
 - SEO: canonical, Open Graph / Twitter cards, JSON-LD (Person, WebSite, ProfilePage), `sitemap.xml`, `robots.txt`.
@@ -33,7 +58,7 @@
 - Footer wordmark: jumping letters that flip between solid white and lime outline, plus a scrolling marquee. Colours: `--wA`, `--wB`.
 
 ## v7.2 – v7.4 changes
-- New hero portrait (`img/hero.webp`), favicon / `profile-hero.*`, share card `og.jpg` and PWA icons (`img/icon-192.png`, `icon-512.png`) built from the new photo; `site.webmanifest` added.
+- New hero portrait (`assets/img/hero.webp`), favicon / `profile-hero.*`, share card `og.jpg` and PWA icons (`assets/img/icon-192.png`, `icon-512.png`) built from the new photo; `site.webmanifest` added.
 - Animations no longer switch off when the OS asks for "reduced motion" (that was why they only ran on phones). Heavy desktop effects (backdrop blur on cards, parallax reads) were lightened.
 - Custom cursor circle removed.
 - Mobile: scroll-blur on the hero text removed, hero portrait smaller, new dropdown menu (closes on outside tap, scroll, Esc).
